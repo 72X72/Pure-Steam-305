@@ -1,84 +1,148 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pure Steam Miami</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      background: white;
-      color: black;
-      text-align: center;
-    }
+      font-family: 'Rubik', sans-serif;
+      background-color: #fff;
+      color: #000;
+    }header {
+  background: linear-gradient(90deg, #ff2d95, #3be3ff);
+  color: white;
+  padding: 50px 20px;
+  text-align: center;
+}
 
-    header {
-      background: linear-gradient(90deg, #ff0080, #00bfff);
-      color: white;
-      padding: 2rem 1rem;
-    }
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
 
-    h1 {
-      font-size: 2.5rem;
-    }
+header p {
+  margin-top: 10px;
+  font-style: italic;
+}
 
-    .tagline {
-      font-style: italic;
-    }
+.section {
+  padding: 40px 20px;
+  text-align: center;
+}
 
-    section {
-      padding: 1.5rem;
-    }
+.section h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
 
-    .socials a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #ff0080;
-      font-weight: bold;
-    }
+.icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  font-size: 2.5em;
+  color: #ff2d95;
+}
 
-    .footer {
-      background: black;
-      color: white;
-      padding: 1rem;
-      font-size: 0.9rem;
-    }
+.icons div {
+  text-align: center;
+  max-width: 120px;
+}
+
+.icons span {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #000;
+}
+
+.contact {
+  background: #000;
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.contact p,
+.contact a {
+  color: white;
+  text-decoration: none;
+}
+
+.payment-links {
+  margin: 15px 0;
+}
+
+.payment-links a {
+  display: inline-block;
+  margin: 5px 10px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background: #ff2d95;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer {
+  background: #111;
+  color: #ccc;
+  padding: 20px;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+footer a {
+  color: #ff2d95;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
   </style>
-</head>
-<body>
-
+</head><body>
   <header>
     <h1>Pure Steam Miami</h1>
-    <p class="tagline">We Bring Miami’s Heat to Your Car</p>
-  </header>
-
-  <section>
-    <h2>Mobile Detailing Services</h2>
-    <p>Exterior + Interior Steam Cleaning</p>
-    <p>Motorcycles, Dirt Bikes, Upholstery & Clothing</p>
-    <p>Tile, Carpet, Gutters & Driveways</p>
-    <p>100% Sanitization</p>
-  </section>
-
-  <section>
+    <p>We Bring Miami’s Heat to Your Car</p>
+  </header>  <section class="section">
+    <h2>What We Clean</h2>
+    <div class="icons">
+      <div><i class="fas fa-car"></i><span>Cars</span></div>
+      <div><i class="fas fa-truck-pickup"></i><span>Trucks</span></div>
+      <div><i class="fas fa-motorcycle"></i><span>Motorcycles</span></div>
+      <div><i class="fas fa-couch"></i><span>Upholstery</span></div>
+      <div><i class="fas fa-bath"></i><span>Bathrooms</span></div>
+      <div><i class="fas fa-sink"></i><span>Kitchens</span></div>
+      <div><i class="fas fa-shower"></i><span>Showers</span></div>
+      <div><i class="fas fa-water"></i><span>Boats</span></div>
+      <div><i class="fas fa-wind"></i><span>AC Units</span></div>
+      <div><i class="fas fa-dumpster"></i><span>Driveways</span></div>
+      <div><i class="fas fa-gem"></i><span>Granite</span></div>
+    </div>
+  </section>  <section class="section">
     <h2>Book Now</h2>
     <p>📍 Liberty City | 📞 (786) 581-7385</p>
     <p>💵 $15 Cars | $20 Trucks | $5 Per Travel Mile</p>
-    <p><strong style="color: #ff0080;">Pay via CashApp</strong></p>
-  </section>
-
-  <div class="footer">
-    <p>Follow us:</p>
-    <div class="socials">
-      <a href="https://www.instagram.com/frank_b_white" target="_blank">Instagram</a> |
-      <a href="https://www.tiktok.com/@frankbwhite" target="_blank">TikTok</a> |
-      <a href="https://www.facebook.com/PureSteamMiam" target="_blank">Facebook</a>
+    <div class="payment-links">
+      <a href="#">Pay with CashApp</a>
+      <a href="#">Pay with PayPal</a>
+      <a href="#">Pay with Chime</a>
+      <a href="#" style="background: gray; pointer-events: none;">Zelle (Coming Soon)</a>
     </div>
-    <p>Email us: puresteammiami@gmail.com</p>
-  </div>
+  </section>  <div class="contact">
+    <p>Follow us on:</p>
+    <p>
+      <a href="https://instagram.com/frank_b_white" target="_blank">Instagram</a> |
+      <a href="https://tiktok.com/@frankbwhite" target="_blank">TikTok</a> |
+      <a href="https://facebook.com/PureSteamMiam" target="_blank">Facebook</a>
+    </p>
+    <p>Email us: <a href="mailto:puresteammiami@gmail.com">puresteammiami@gmail.com</a></p>
+  </div>  <footer>
+    &copy; 2025 Pure Steam Miami — All Rights Reserved.
+  </footer>
+</body></html>
 
-</body>
-</html>
-
-updated social links
+landing page update 2
