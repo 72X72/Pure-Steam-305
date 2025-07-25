@@ -1,0 +1,43 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: linear-gradient(to right, #ff0066, #00ccff);
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.tagline {
+  font-size: 1.2em;
+  font-style: italic;
+}
+
+.services, .booking {
+  padding: 20px;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+a {
+  color: #ff0066;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
