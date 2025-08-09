@@ -1,43 +1,180 @@
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  color: #000;
+/* Reset and base */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-header {
-  background: linear-gradient(to right, #ff0066, #00ccff);
-  color: white;
-  padding: 20px;
-  text-align: center;
+body {
+  font-family: 'Poppins', 'Arial', sans-serif;
+  background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
+  color: #222;
+  line-height: 1.6;
+  padding: 30px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.tagline {
-  font-size: 1.2em;
+/* Container max width */
+body > * {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Headers */
+h1, h2 {
+  color: #e60039; /* Miami Heat red */
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 0.75em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 2em;
+  color: #0077b6; /* Miami blue */
+  text-shadow: 1px 1px 3px rgba(230, 0, 57, 0.8);
+}
+
+header p {
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #ff4081; /* Miami pink */
+}
+
+/* Sections */
+section {
+  background: rgba(255 255 255 / 0.85);
+  border-radius: 15px;
+  padding: 30px 25px;
+  margin-bottom: 2em;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+section:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(230, 0, 57, 0.35);
+}
+
+/* Lists */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  color: #1d1d1d;
+}
+
+/* Links */
+a {
+  color: #0077b6;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.25s ease;
+}
+
+a:hover, a:focus {
+  border-color: #e60039;
+  outline: none;
+}
+
+/* Contact phone */
+.contact-phone {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #e60039;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Service grid */
+.services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.service-item {
+  flex: 1 1 150px;
+  text-align: center;
+  color: #ff4081;
+  font-weight: 700;
+  font-size: 1.1rem;
+  background: #ffdde1;
+  padding: 20px 10px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(230, 0, 57, 0.2);
+  cursor: default;
+  user-select: none;
+  transition: background 0.3s ease;
+}
+
+.service-item:hover {
+  background: #f50057;
+  color: #fff;
+  box-shadow: 0 8px 16px rgba(230, 0, 57, 0.6);
+}
+
+.service-icon {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* QR Code */
+.qr-container {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.qr-image {
+  width: 160px;
+  height: 160px;
+  border-radius: 15px;
+  border: 5px solid #0077b6;
+  box-shadow: 0 6px 12px rgba(0, 119, 182, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+.qr-image:hover {
+  box-shadow: 0 12px 25px rgba(230, 0, 57, 0.7);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 3em;
   font-style: italic;
 }
 
-.services, .booking {
-  padding: 20px;
-  text-align: center;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-a {
-  color: #ff0066;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-footer {
-  background: #000;
-  color: #fff;
-  text-align: center;
-  padding: 10px;
+/* Responsive */
+@media (max-width: 600px) {
+  .services-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  section {
+    padding: 20px 15px;
+  }
+  .contact-phone {
+    font-size: 1.25rem;
+  }
+  .service-item {
+    flex-basis: 100%;
+  }
 }
