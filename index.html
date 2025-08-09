@@ -1,77 +1,90 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pure Steam Miami</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pure Steam Miami | Mobile Steam Cleaning</title>
   <style>
+    /* Reset & base */
     body {
       margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: white;
+      font-family: 'Arial', sans-serif;
+      background-color: #ffffff;
       color: #111;
+      line-height: 1.6;
+      padding: 20px;
     }
-    header {
-      background: linear-gradient(to right, #ff007f, #00cfff);
-      color: white;
-      text-align: center;
-      padding: 40px 20px 20px;
+    h1, h2 {
+      color: #ff3c78; /* Vice pink */
+      margin-bottom: 0.5em;
+      font-weight: 700;
     }
-    h1 {
-      font-size: 2.8rem;
-      margin: 0;
+    a {
+      color: #00d2ff; /* Vice blue */
+      text-decoration: none;
     }
-    h2 {
-      font-size: 2rem;
-      margin: 30px 0 10px;
-      text-align: center;
+    a:hover {
+      text-decoration: underline;
     }
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      gap: 15px;
-      padding: 0 20px;
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    section {
+      margin-bottom: 40px;
+      border-bottom: 2px solid #ff3c78;
+      padding-bottom: 30px;
+    }
+    /* Payment and Social Lists */
+    .payment-list li, .social-list li {
+      font-size: 1.2rem;
+    }
+    /* Contact phone */
+    .contact-phone {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-top: 10px;
+      color: #ff3c78;
+    }
+    /* Service icons container */
+    .services-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: flex-start;
+    }
+    .service-item {
+      flex: 1 1 140px;
       text-align: center;
     }
     .service-icon {
-      font-size: 1.8rem;
-      color: #ff007f;
+      font-size: 50px;
+      margin-bottom: 10px;
+      color: #ff3c78;
     }
-    .booking, .contact {
-      text-align: center;
-      padding: 20px;
-    }
-    .buttons a {
-      display: inline-block;
-      margin: 8px;
-      padding: 10px 16px;
-      color: white;
-      background: #ff007f;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 1rem;
-    }
-    .buttons a.gray {
-      background: gray;
-    }
-    footer {
-      background: black;
-      color: white;
-      padding: 20px;
+    /* QR Code container */
+    .qr-container {
+      margin-top: 15px;
       text-align: center;
     }
-    .socials {
-      font-size: 1.4rem;
-      margin: 15px 0;
+    .qr-image {
+      width: 150px;
+      height: 150px;
+      border: 3px solid #00d2ff;
+      border-radius: 10px;
     }
-    .socials a {
-      margin: 0 10px;
-      color: white;
-      text-decoration: none;
-    }
-    .socials i {
-      margin-right: 6px;
+    /* Responsive */
+    @media (max-width: 600px) {
+      .services-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      .service-item {
+        flex-basis: 100%;
+      }
     }
   </style>
 </head>
@@ -79,39 +92,81 @@
   <header>
     <h1>Pure Steam Miami</h1>
     <p><em>We Bring Miami’s Heat to Your Car</em></p>
-  </header>  <h2>What We Clean</h2>
-  <div class="services">
-    <div><div class="service-icon">🚗</div>Cars</div>
-    <div><div class="service-icon">🚚</div>Trucks</div>
-    <div><div class="service-icon">🏍️</div>Motorcycles</div>
-    <div><div class="service-icon">🛋️</div>Upholstery</div>
-    <div><div class="service-icon">🛁</div>Bathrooms</div>
-    <div><div class="service-icon">👨‍🍳</div>Kitchens</div>
-    <div><div class="service-icon">🚿</div>Showers</div>
-    <div><div class="service-icon">🛥️</div>Boats</div>
-    <div><div class="service-icon">❄️</div>AC Units</div>
-    <div><div class="service-icon">🧱</div>Driveways</div>
-    <div><div class="service-icon">🔷</div>Granite</div>
-  </div>  <div class="booking">
-    <h2>Book Now</h2>
-    <p>📍 Liberty City | 📞 (786) 581-7385</p>
-    <p>💵 $15 Cars | $20 Trucks | $5 Per Travel Mile</p>
-    <div class="buttons">
-      <a href="#">Pay with CashApp</a>
-      <a href="#">Pay with PayPal</a>
-      <a href="#">Pay with Chime</a>
-      <a href="#" class="gray">Zelle (Coming Soon)</a>
+  </header>
+
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="service-item">
+        <div class="service-icon">🚗</div>
+        <div>Car Cleaning</div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">🚙</div>
+        <div>Truck Cleaning</div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">🛥️</div>
+        <div>Boat Cleaning</div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">🏠</div>
+        <div>Home Steam Cleaning</div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">🛋️</div>
+        <div>Upholstery Cleaning</div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">👟</div>
+        <div>Shoe Cleaning</div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">🧊</div>
+        <div>AC Unit Cleaning</div>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">🧼</div>
+        <div>Granite & Kitchen Surfaces</div>
+      </div>
     </div>
-  </div>  <footer>
-    <div class="socials">
-      <a href="https://www.instagram.com/frank_b_white" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
-      <a href="https://www.tiktok.com/@frankbwhite" target="_blank"><i class="fab fa-tiktok"></i>TikTok</a>
-      <a href="https://www.facebook.com/PureSteamMiam" target="_blank"><i class="fab fa-facebook"></i>Facebook</a>
+  </section>
+
+  <section id="payment">
+    <h2>Payment Methods</h2>
+    <ul class="payment-list">
+      <li><strong>Cash App:</strong> <a href="https://cash.app/$puresteammiami" target="_blank" rel="noopener">$puresteammiami</a></li>
+      <li><strong>PayPal:</strong> <a href="mailto:puresteammiami@gmail.com">puresteammiami@gmail.com</a></li>
+      <li><strong>Chime:</strong> <a href="https://chime.com" target="_blank" rel="noopener">$PureSteamMiami</a></li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p class="contact-phone">Phone: <a href="tel:+17862973068">(786) 297-3068</a></p>
+  </section>
+
+  <section id="social">
+    <h2>Follow Us on Social Media</h2>
+    <ul class="social-list">
+      <li><a href="https://instagram.com/frank_b_white" target="_blank" rel="noopener">Instagram: @frank_b_white</a></li>
+      <li><a href="https://tiktok.com/@frankbwhite" target="_blank" rel="noopener">TikTok: @frankbwhite</a></li>
+      <li><a href="https://facebook.com/puresteammiami" target="_blank" rel="noopener">Facebook: Puresteammiami</a></li>
+    </ul>
+    <div class="qr-container">
+      <p>Scan to Visit Our Website</p>
+      <img
+        class="qr-image"
+        src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2F72x72.github.io%2FPure-Steam-305%2F&size=150x150"
+        alt="QR code linking to Pure Steam Miami website"
+      />
     </div>
-    <div class="contact">
-      Email us: <a href="mailto:puresteammiami@gmail.com">puresteammiami@gmail.com</a>
-    </div>
-    <p>© 2025 Pure Steam Miami — All Rights Reserved.</p>
+  </section>
+
+  <footer style="margin-top: 40px; text-align: center; color: #999;">
+    <p>© 2025 Pure Steam Miami. All rights reserved.</p>
   </footer>
 </body>
 </html>
+
+update # 1
