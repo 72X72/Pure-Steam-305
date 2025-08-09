@@ -1,0 +1,165 @@
+/* booking-style.css */
+
+/* Background & font */
+body {
+  background: linear-gradient(135deg, #ff3ecf, #00f0ff);
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin: 0;
+}
+
+/* Header styles */
+header {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+header h1 {
+  font-size: 2.8rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  text-shadow: 0 0 10px #ff3ecf, 0 0 20px #00f0ff;
+  margin-bottom: 0.25rem;
+}
+
+header p {
+  font-size: 1.25rem;
+  font-style: italic;
+  text-shadow: 0 0 8px #ff3ecf;
+}
+
+/* Skyline image */
+.skyline {
+  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+  height: 220px;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 15px;
+  box-shadow: 0 0 30px #ff3ecf, 0 0 40px #00f0ff;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+/* Form container */
+form {
+  background: rgba(255 255 255 / 0.1);
+  border-radius: 20px;
+  padding: 25px 30px;
+  max-width: 900px;
+  width: 100%;
+  box-shadow: 0 0 15px rgba(255, 62, 207, 0.6), 0 0 25px rgba(0, 240, 255, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+/* Labels */
+label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 6px;
+  text-shadow: 0 0 3px #000;
+}
+
+/* Inputs & select & textarea */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea,
+input[type="date"],
+input[type="time"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Make textarea resizable vertically */
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Submit button */
+button {
+  background: linear-gradient(90deg, #ff3ecf, #00f0ff);
+  border: none;
+  padding: 15px 0;
+  width: 100%;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #fff;
+  border-radius: 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 0 20px #ff3ecf, 0 0 30px #00f0ff;
+  transition: box-shadow 0.3s ease;
+}
+
+button:hover,
+button:focus {
+  box-shadow: 0 0 30px #ff3ecf, 0 0 50px #00f0ff;
+  outline: none;
+}
+
+/* Payment info container */
+.payment-info {
+  background: rgba(255 255 255 / 0.15);
+  padding: 15px 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+  box-shadow: 0 0 15px #ff3ecf, 0 0 20px #00f0ff;
+}
+
+/* Payment links */
+.payment-info a {
+  color: #00f0ff;
+  text-decoration: underline;
+  font-weight: 900;
+  margin: 0 10px;
+}
+
+.payment-info a:hover {
+  color: #ff3ecf;
+}
+
+/* Success message */
+.success-message {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #00ffea;
+  margin-top: 20px;
+  text-shadow: 0 0 10px #00ffea;
+  display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  .skyline {
+    height: 160px;
+  }
+}
