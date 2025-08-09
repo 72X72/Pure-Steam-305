@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book Now - Puresteam Miami Mobile Detailing</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Additional styles just for booking page */
+
+    body {
+      background: linear-gradient(135deg, #ff3ecf, #00f0ff);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    header {
+      width: 100%;
+      max-width: 900px;
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      text-transform: uppercase;
+      font-weight: 900;
+      text-shadow: 0 0 10px #ff3ecf, 0 0 20px #00f0ff;
+      margin-bottom: 0.25rem;
+    }
+
+    header p {
+      font-size: 1.25rem;
+      font-style: italic;
+      text-shadow: 0 0 8px #ff3ecf;
+    }
+
+    .skyline {
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
+      height: 220px;
+      width: 100%;
+      max-width: 900px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #ff3ecf, 0 0 40px #00f0ff;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    form {
+      background: rgba(255 255 255 / 0.1);
+      border-radius: 20px;
+      padding: 25px 30px;
+      max-width: 900px;
+      width: 100%;
+      box-shadow: 0 0 15px rgba(255, 62, 207, 0.6), 0 0 25px rgba(0, 240, 255, 0.6);
+      backdrop-filter: blur(8px);
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-shadow: 0 0 3px #000;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea,
+    input[type="date"],
+    input[type="time"] {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 18px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #222;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    button {
+      background: linear-gradient(90deg, #ff3ecf, #00f0ff);
+      border: none;
+      padding: 15px 0;
+      width: 100%;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: #fff;
+      border-radius: 15px;
+      cursor: pointer;
+      text-transform: uppercase;
+      box-shadow: 0 0 20px #ff3ecf, 0 0 30px #00f0ff;
+      transition: box-shadow 0.3s ease;
+    }
+
+    button:hover,
+    button:focus {
+      box-shadow: 0 0 30px #ff3ecf, 0 0 50px #00f0ff;
+      outline: none;
+    }
+
+    .payment-info {
+      background: rgba(255 255 255 / 0.15);
+      padding: 15px 20px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #fff;
+      box-shadow: 0 0 15px #ff3ecf, 0 0 20px #00f0ff;
+    }
+
+    .payment-info a {
+      color: #00f0ff;
+      text-decoration: underline;
+      font-weight: 900;
+      margin: 0 10px;
+    }
+
+    .payment-info a:hover {
+      color: #ff3ecf;
+    }
+
+    .success-message {
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #00ffea;
+      margin-top: 20px;
+      text-shadow: 0 0 10px #00ffea;
+      display: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      .skyline {
+        height: 160px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Book Your 305 Heat Clean Today</h1>
+    <p>Steam Over Stains — Anywhere in Miami</p>
+  </header>
+
+  <div class="skyline" aria-hidden="true"></div>
+
+  <form id="bookingForm" action="https://formspree.io/f/xlezvkjq" method="POST">
+    <label for="service">Select Service</label>
+    <select id="service" name="service" required>
+      <option value="" disabled selected>Choose your package</option>
+      <option>Playoff Polish</option>
+      <option>Heat Wave Clean</option>
+      <option>305 MVP Package</option>
+      <option>Interior Detailing</option>
+      <option>Exterior Steam Cleaning</option>
+      <option>Full Vehicle Steam Clean</option>
+      <option>Boat Cleaning</option>
+      <option>Custom Request</option>
+    </select>
+
+    <label for="date">Preferred Date</label>
+    <input type="date" id="date" name="date" required min="" />
+
+    <label for="time">Preferred Time</label>
+    <input type="time" id="time" name="time" required />
+
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" required placeholder="Your full name" />
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" required placeholder="(786) 555-1234" pattern="[\d\s()+-]{7,15}" />
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="_replyto" required placeholder="you@example.com" />
+
+    <label for="notes">Special Requests / Notes</label>
+    <textarea id="notes" name="notes" placeholder="Let us know if you have any special requests..."></textarea>
+
+    <div class="payment-info">
+      <div>Prepay with:</div>
+      <div>
+        <a href="https://cash.app/$puresteammiami" target="_blank" rel="noopener noreferrer">Cash App: $puresteammiami</a> |
+        <a href="mailto:puresteammiami@gmail.com">PayPal: puresteammiami@gmail.com</a> |
+        <a href="https://chime.com" target="_blank" rel="noopener noreferrer">Chime: $PureSteamMiami</a>
+      </div>
+    </div>
+
+    <button type="submit">Book Now</button>
+
+    <p class="success-message" id="successMessage">Thank you! Your booking request has been sent.</p>
+  </form>
+
+  <script>
+    // Set minimum date for date picker to today
+    const dateInput = document.getElementById('date');
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+
+    // Handle form submission success message
+    const form = document.getElementById('bookingForm');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const data = new FormData(form);
+
+      fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          form.reset();
+          successMessage.style.display = 'block';
+        } else {
+          response.json().then(data => {
+            if (Object.hasOwn(data, 'errors')) {
+              alert(data["errors"].map(error => error["message"]).join(", "));
+            } else {
+              alert("Oops! There was a problem submitting your form");
+            }
+          });
+        }
+      }).catch(() => {
+        alert("Oops! There was a problem submitting your form");
+      });
+    });
+  </script>
+</body>
+</html>
