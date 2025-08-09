@@ -178,3 +178,23 @@ footer {
     flex-basis: 100%;
   }
 }
+.book-now-button {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff3ecf, #00f0ff);
+  color: #fff;
+  font-weight: 900;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 0 20px #ff3ecf, 0 0 30px #00f0ff;
+  transition: box-shadow 0.3s ease;
+  text-transform: uppercase;
+  margin: 20px 0;
+}
+
+.book-now-button:hover,
+.book-now-button:focus {
+  box-shadow: 0 0 30px #ff3ecf, 0 0 50px #00f0ff;
+  outline: none;
+}
