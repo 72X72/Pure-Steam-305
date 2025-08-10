@@ -1,94 +1,293 @@
-to<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pure Steam Miami | Mobile Steam Cleaning</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pure Steam Miami - Mobile Detailing</title>
+<style>
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin:0; padding:0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
+    color: #222;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a {
+    text-decoration: none;
+    color: #0077b6;
+    font-weight: 700;
+  }
+  a:hover, a:focus {
+    color: #e60039;
+  }
+
+  /* Header */
+  header {
+    background: #fff;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header h1 {
+    font-weight: 900;
+    color: #e60039; /* Miami Heat red */
+    margin: 0;
+    font-size: 1.8rem;
+  }
+  nav {
+    display: flex;
+    gap: 1rem;
+  }
+  nav button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 900;
+    color: #0077b6;
+    font-size: 1rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  nav button:hover,
+  nav button.active {
+    background-color: #e60039;
+    color: #fff;
+  }
+
+  /* Main */
+  main {
+    flex: 1;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .hero h2 {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: #e60039;
+    margin-bottom: 0.5rem;
+  }
+  .hero p {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: #ff4081;
+    margin-bottom: 1.5rem;
+  }
+  .hero a.book-now-btn {
+    background: linear-gradient(90deg, #ff3ecf, #00f0ff);
+    padding: 1rem 3rem;
+    border-radius: 30px;
+    color: white;
+    font-weight: 900;
+    font-size: 1.2rem;
+    box-shadow: 0 0 20px #ff3ecf, 0 0 30px #00f0ff;
+    text-transform: uppercase;
+    transition: box-shadow 0.3s ease;
+  }
+  .hero a.book-now-btn:hover,
+  .hero a.book-now-btn:focus {
+    box-shadow: 0 0 30px #ff3ecf, 0 0 50px #00f0ff;
+    outline: none;
+  }
+
+  /* Testimonials Section */
+  section.testimonials {
+    margin-bottom: 3rem;
+  }
+  section.testimonials h3 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    color: #e60039;
+    text-align: center;
+  }
+  .testimonial-list {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .testimonial-card {
+    flex: 1 1 280px;
+    background: #ffdde1;
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(230, 0, 57, 0.3);
+    text-align: center;
+  }
+  .testimonial-card video {
+    border-radius: 12px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 0.75rem;
+  }
+  .testimonial-caption {
+    font-weight: 700;
+    color: #e60039;
+  }
+
+  /* Gallery Section */
+  section.gallery {
+    margin-bottom: 3rem;
+  }
+  section.gallery h3 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    color: #e60039;
+    text-align: center;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+    gap: 1rem;
+  }
+  .gallery-grid img,
+  .gallery-grid video {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(230, 0, 57, 0.3);
+    object-fit: cover;
+  }
+
+  /* Footer */
+  footer {
+    background: #fff;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    box-shadow: 0 -3px 8px rgba(0,0,0,0.1);
+  }
+  footer .contact-info {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: #e60039;
+  }
+  footer .qr-code {
+    margin-top: 0.75rem;
+  }
+  footer .qr-code img {
+    width: 140px;
+    height: 140px;
+    border-radius: 15px;
+    border: 4px solid #0077b6;
+    box-shadow: 0 6px 12px rgba(0, 119, 182, 0.5);
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .testimonial-list {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>Pure Steam Miami</h1>
-    <p><em>We Bring Miami’s Heat to Your Car</em></p>
-<a href="booking.html" class="book-now-button">BOOK NOW</a>
-  </header>
+<header>
+  <h1>Pure Steam Miami</h1>
+  <nav>
+    <button id="lang-en" class="active" aria-label="Switch to English">EN</button>
+    <button id="lang-es" aria-label="Switch to Spanish">ES</button>
+    <button id="lang-ht" aria-label="Switch to Haitian Creole">HT</button>
+  </nav>
+</header>
 
-  <section id="services">
-    <h2>Our Services</h2>
-    <div class="services-grid">
-      <div class="service-item">
-        <div class="service-icon">🚗</div>
-        <div>Car Cleaning</div>
-      </div>
-      <div class="service-item">
-        <div class="service-icon">🚙</div>
-        <div>Truck Cleaning</div>
-      </div>
-      <div class="service-item">
-        <div class="service-icon">🛥️</div>
-        <div>Boat Cleaning</div>
-      </div>
-      <div class="service-item">
-        <div class="service-icon">🏠</div>
-        <div>Home Steam Cleaning</div>
-      </div>
-      <div class="service-item">
-        <div class="service-icon">🛋️</div>
-        <div>Upholstery Cleaning</div>
-      </div>
-      <div class="service-item">
-        <div class="service-icon">👟</div>
-        <div>Shoe Cleaning</div>
-      </div>
-      <div class="service-item">
-        <div class="service-icon">🧊</div>
-        <div>AC Unit Cleaning</div>
-      </div>
-      <div class="service-item">
-        <div class="service-icon">🧼</div>
-        <div>Granite & Kitchen Surfaces</div>
-      </div>
+<main>
+  <section class="hero">
+    <h2>We Bring Miami’s Heat to Your Car</h2>
+    <p>Steam Over Stains — Anywhere in Miami</p>
+    <a href="booking.html" class="book-now-btn" aria-label="Book Now">Book Now</a>
+  </section>
+
+  <section class="testimonials" aria-label="Customer Testimonials">
+    <h3>What Our Customers Say</h3>
+    <div class="testimonial-list">
+      <article class="testimonial-card" lang="en">
+        <video controls muted playsinline poster="https://i.imgur.com/vJMtMa7.jpg" aria-describedby="caption-en">
+          <source src="https://cdn.videvo.net/videvo_files/video/free/2017-07/small_watermarked/170627_01_Steam_Cleaning_03_preview.webm" type="video/webm">
+          <source src="https://cdn.videvo.net/videvo_files/video/free/2017-07/small_watermarked/170627_01_Steam_Cleaning_03_preview.mp4" type="video/mp4">
+          Sorry, your browser doesn't support embedded videos.
+        </video>
+        <p id="caption-en" class="testimonial-caption">“Pure Steam Miami made my car feel brand new! Highly recommend.” — Michael</p>
+      </article>
+      <article class="testimonial-card" lang="es" hidden>
+        <video controls muted playsinline poster="https://i.imgur.com/5j4PcMF.jpg" aria-describedby="caption-es">
+          <source src="https://cdn.videvo.net/videvo_files/video/free/2017-07/small_watermarked/170627_01_Steam_Cleaning_04_preview.webm" type="video/webm">
+          <source src="https://cdn.videvo.net/videvo_files/video/free/2017-07/small_watermarked/170627_01_Steam_Cleaning_04_preview.mp4" type="video/mp4">
+          Sorry, your browser doesn't support embedded videos.
+        </video>
+        <p id="caption-es" class="testimonial-caption">“¡Pure Steam Miami dejó mi coche como nuevo! Muy recomendable.” — Carlos</p>
+      </article>
+      <article class="testimonial-card" lang="ht" hidden>
+        <video controls muted playsinline poster="https://i.imgur.com/dTGE2Zv.jpg" aria-describedby="caption-ht">
+          <source src="https://cdn.videvo.net/videvo_files/video/free/2017-07/small_watermarked/170627_01_Steam_Cleaning_05_preview.webm" type="video/webm">
+          <source src="https://cdn.videvo.net/videvo_files/video/free/2017-07/small_watermarked/170627_01_Steam_Cleaning_05_preview.mp4" type="video/mp4">
+          Sorry, your browser doesn't support embedded videos.
+        </video>
+        <p id="caption-ht" class="testimonial-caption">“Pure Steam Miami fè machin mwen tankou nouvo! Mwen rekòmande li anpil.” — Jean</p>
+      </article>
     </div>
   </section>
 
-  <section id="payment">
-    <h2>Payment Methods</h2>
-    <ul class="payment-list">
-      <li><strong>Cash App:</strong> <a href="https://cash.app/$puresteammiami" target="_blank" rel="noopener">$puresteammiami</a></li>
-      <li><strong>PayPal:</strong> <a href="mailto:puresteammiami@gmail.com">puresteammiami@gmail.com</a></li>
-      <li><strong>Chime:</strong> <a href="https://chime.com" target="_blank" rel="noopener">$PureSteamMiami</a></li>
-    </ul>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p class="contact-phone">Phone: <a href="tel:+17862973068">(786) 297-3068</a></p>
-  </section>
-
-  <section id="social">
-    <h2>Follow Us on Social Media</h2>
-    <ul class="social-list">
-      <li><a href="https://instagram.com/frank_b_white" target="_blank" rel="noopener">Instagram: @frank_b_white</a></li>
-      <li><a href="https://tiktok.com/@frankbwhite" target="_blank" rel="noopener">TikTok: @frankbwhite</a></li>
-      <li><a href="https://facebook.com/puresteammiami" target="_blank" rel="noopener">Facebook: Puresteammiami</a></li>
-    </ul>
-    <div class="qr-container">
-      <p>Scan to Visit Our Website</p>
-      <img
-        class="qr-image"
-        src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2F72x72.github.io%2FPure-Steam-305%2F&size=150x150"
-        alt="QR code linking to Pure Steam Miami website"
-      />
+  <section class="gallery" aria-label="Photo and Video Gallery">
+    <h3>Gallery</h3>
+    <div class="gallery-grid">
+      <img src="https://cdn.videvo.net/videvo_files/converted/2015_08/preview/Steam_cleaning_car_01_Videvo_thumbnail.jpg" alt="Car being steam cleaned" />
+      <img src="https://cdn.videvo.net/videvo_files/converted/2019_03/preview/190310_Barista_Steam_01_Videvo_thumbnail.jpg" alt="Steam rising from cleaning" />
+      <video controls muted playsinline poster="https://i.imgur.com/ZYjLyKl.jpg">
+        <source src="https://cdn.videvo.net/videvo_files/video/free/2018-12/small_watermarked/181128_07_Steam_Cleaning_preview.webm" type="video/webm" />
+        <source src="https://cdn.videvo.net/videvo_files/video/free/2018-12/small_watermarked/181128_07_Steam_Cleaning_preview.mp4" type="video/mp4" />
+        Sorry, your browser doesn't support embedded videos.
+      </video>
+      <img src="https://cdn.videvo.net/videvo_files/converted/2017_07/preview/170627_01_Steam_Cleaning_01_Videvo_thumbnail.jpg" alt="Steam cleaning nozzle" />
     </div>
   </section>
+</main>
 
-  <script>
-  window.onerror = function(msg, url, lineNo, columnNo, error) {
-    alert(
-      'Error: ' + msg + '\n' +
-      'Script: ' + url + '\n' +
-      'Line: ' + lineNo + ', Column: ' + columnNo
-    );
-    return false;
-  };
+<footer>
+  <div class="contact-info" aria-label="Contact Information">
+    <p>Call/Text: (786) 297-3068</p>
+    <p>Email: puresteammiami@gmail.com</p>
+  </div>
+  <div class="qr-code" aria-label="QR code linking to Pure Steam Miami website">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2F72x72.github.io%2FPure-Steam-305%2F&size=150x150" alt="QR code linking to Pure Steam Miami website" />
+  </div>
+</footer>
+
+<script>
+  const langButtons = document.querySelectorAll('nav button');
+  const testimonials = document.querySelectorAll('.testimonial-card');
+
+  langButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active from all buttons
+      langButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      const lang = button.id.split('-')[1];
+      testimonials.forEach(card => {
+        card.hidden = card.lang !== lang;
+      });
+    });
+  });
 </script>
+</body>
+</html>
