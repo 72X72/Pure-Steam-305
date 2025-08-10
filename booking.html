@@ -1,119 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Book Now - Pure Steam Miami Mobile Detailing</title>
-<link rel="stylesheet" href="booking-style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book Now - Pure Steam Miami</title>
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #ff3ecf, #00f0ff);
+      color: white;
+      max-width: 600px;
+      margin: 3rem auto;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #ff3ecf, 0 0 40px #00f0ff;
+    }
+    h1 {
+      text-align: center;
+      font-weight: 900;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      text-shadow: 0 0 15px #ff3ecf;
+    }
+    label {
+      display: block;
+      font-weight: 700;
+      margin: 1rem 0 0.5rem;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    button {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(90deg, #ff3ecf, #00f0ff);
+      border: none;
+      border-radius: 20px;
+      color: white;
+      font-weight: 900;
+      font-size: 1.2rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px #ff3ecf, 0 0 25px #00f0ff;
+      transition: box-shadow 0.3s ease;
+    }
+    button:hover, button:focus {
+      box-shadow: 0 0 25px #ff3ecf, 0 0 40px #00f0ff;
+      outline: none;
+    }
+  </style>
 </head>
 <body>
-<header>
-  <h1>Book Your 305 Heat Clean Today</h1>
-  <p>Steam Over Stains — Anywhere in Miami</p>
-</header>
+  <h1>Book Your Steam Clean</h1>
+  <form action="https://formspree.io/f/xlezvkjq" method="POST">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" required />
 
-<form id="bookingForm" action="https://formspree.io/f/xlezvkjq" method="POST">
-  <label for="service">Select Service</label>
-  <select id="service" name="service" required>
-    <option value="" disabled selected>Choose your package</option>
-    <option>Playoff Polish</option>
-    <option>Heat Wave Clean</option>
-    <option>305 MVP Package</option>
-    <option>Interior Detailing</option>
-    <option>Exterior Steam Cleaning</option>
-    <option>Full Vehicle Steam Clean</option>
-    <option>Boat Cleaning</option>
-    <option>Custom Request</option>
-  </select>
+    <label for="email">Email</label>
+    <input type="email" id="email" name="_replyto" required />
 
-  <label for="date">Preferred Date</label>
-  <input type="date" id="date" name="date" required min="" />
+    <label for="service">Service</label>
+    <select id="service" name="service" required>
+      <option value="" disabled selected>Select a package</option>
+      <option value="Playoff Polish">Playoff Polish</option>
+      <option value="Heat Wave Clean">Heat Wave Clean</option>
+      <option value="305 MVP Package">305 MVP Package</option>
+      <option value="Interior Detailing">Interior Detailing</option>
+      <option value="Exterior Steam Cleaning">Exterior Steam Cleaning</option>
+      <option value="Full Vehicle Steam Clean">Full Vehicle Steam Clean</option>
+      <option value="Boat Cleaning">Boat Cleaning</option>
+      <option value="Custom Request">Custom Request</option>
+    </select>
 
-  <label for="time">Preferred Time</label>
-  <input type="time" id="time" name="time" required />
+    <label for="date">Preferred Date</label>
+    <input type="date" id="date" name="date" required />
 
-  <label for="name">Full Name</label>
-  <input type="text" id="name" name="name" required placeholder="Your full name" />
-
-  <label for="phone">Phone Number</label>
-  <input type="tel" id="phone" name="phone" required placeholder="(786) 555-1234" pattern="[\d\s()+-]{7,15}" />
-
-  <label for="email">Email Address</label>
-  <input type="email" id="email" name="_replyto" required placeholder="you@example.com" />
-
-  <label for="notes">Special Requests / Notes</label>
-  <textarea id="notes" name="notes" placeholder="Let us know if you have any special requests..."></textarea>
-
-  <button type="submit">Book Now</button>
-
-  <p class="success-message" id="successMessage" style="display:none; color:#00ffea; font-weight:bold; margin-top:1rem;">
-    Thank you! Your booking request has been sent.
-  </p>
-</form>
-
-<script>
-  // Set min date for date picker
-  const dateInput = document.getElementById('date');
-  const today = new Date().toISOString().split('T')[0];
-  dateInput.setAttribute('min', today);
-
-  const form = document.getElementById('bookingForm');
-  const successMessage = document.getElementById('successMessage');
-
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const data = new FormData(form);
-
-    fetch(form.action, {
-      method: form.method,
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    }).then(response => {
-      if (response.ok) {
-        form.reset();
-        successMessage.style.display = 'block';
-
-        // Send SMS notification using Gmail-to-SMS gateway
-        sendSmsNotification(data);
-
-      } else {
-        response.json().then(data => {
-          if (data.errors) {
-            alert(data.errors.map(e => e.message).join(", "));
-          } else {
-            alert("Oops! Problem submitting your form.");
-          }
-        });
-      }
-    }).catch(() => alert("Oops! Problem submitting your form."));
-  });
-
-  function sendSmsNotification(formData) {
-    // Build SMS message
-    const message = `
-New Booking:
-Name: ${formData.get('name')}
-Phone: ${formData.get('phone')}
-Email: ${formData.get('_replyto')}
-Service: ${formData.get('service')}
-Date: ${formData.get('date')}
-Time: ${formData.get('time')}
-Notes: ${formData.get('notes')}
-    `;
-
-    // Email-to-SMS gateway example for Verizon (adjust as needed)
-    // Replace YOUR_PHONE_NUMBER and CARRIER_GATEWAY appropriately
-    const phoneNumber = '7862973068'; // Your phone number digits only
-    const carrierGateway = '@vtext.com'; // Verizon SMS gateway
-    const smsEmail = phoneNumber + carrierGateway;
-
-    // Use Formspree to send the SMS notification by posting to their endpoint
-    // This is a placeholder, as Formspree won't send emails on behalf of others
-    // To do this properly, you’d set up server-side code or an automation service like Zapier/Integromat
-
-    console.log('SMS notification placeholder:', smsEmail, message);
-    // For now, this just logs — you will need a real SMS integration for actual texts
-  }
-</script>
+    <button type="submit">Send Booking Request</button>
+  </form>
 </body>
 </html>
