@@ -21,47 +21,50 @@
     transition: background 0.5s, color 0.5s;
   }
 
+  /* Container */
   .container {
     max-width: 960px;
     margin: 0 auto;
-    padding: 2rem 1rem 4rem;
+    padding: 1.5rem 1rem 3rem;
   }
 
+  /* Header */
   header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
   header h1 {
-    font-size: 3rem;
+    font-size: 2.4rem;
     font-weight: 900;
     color: #ff3ecf;
     text-shadow: 0 0 20px #ff3ecf;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.15rem;
   }
   header p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-style: italic;
     color: #00f0ff;
     text-shadow: 0 0 12px #00f0ff;
   }
 
+  /* Hero */
   .hero {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
   .hero p {
-    font-size: 1.35rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: #eee;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     text-shadow: 0 0 10px #ff3ecf;
   }
   .book-now-btn {
     background: linear-gradient(90deg, #ff3ecf, #00f0ff);
     color: white;
     font-weight: 900;
-    font-size: 1.3rem;
-    padding: 1rem 4rem;
+    font-size: 1.1rem;
+    padding: 0.8rem 3rem;
     border-radius: 30px;
     box-shadow: 0 0 30px #ff3ecf, 0 0 40px #00f0ff;
     text-transform: uppercase;
@@ -75,6 +78,7 @@
     outline: none;
     animation: pulseGlow 2s infinite alternate;
   }
+
   @keyframes pulseGlow {
     from { box-shadow: 0 0 40px #ff3ecf, 0 0 60px #00f0ff; }
     to { box-shadow: 0 0 70px #ff3ecf, 0 0 90px #00f0ff; }
@@ -89,9 +93,9 @@
     background: linear-gradient(90deg, #ff3ecf, #00f0ff);
     color: white;
     font-weight: 900;
-    font-size: 1.2rem;
-    padding: 1rem 2.5rem;
-    border-radius: 35px;
+    font-size: 1rem;
+    padding: 0.8rem 2rem;
+    border-radius: 28px;
     box-shadow: 0 0 25px #ff3ecf, 0 0 35px #00f0ff;
     cursor: pointer;
     border: none;
@@ -104,99 +108,111 @@
     outline: none;
   }
 
+  /* What We Clean Section */
+  .what-we-clean {
+    background: rgba(255 255 255 / 0.1);
+    border-radius: 25px;
+    box-shadow: 0 0 25px rgba(255, 62, 207, 0.6), 0 0 35px rgba(0, 240, 255, 0.6);
+    padding: 1.5rem 1.5rem 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .what-we-clean h2 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #ff3ecf;
+    text-shadow: 0 0 20px #ff3ecf;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
   /* Accordion styles */
   .accordion {
-    background: rgba(255 255 255 / 0.1);
-    border-radius: 20px;
-    box-shadow: 0 0 25px rgba(255, 62, 207, 0.6), 0 0 35px rgba(0, 240, 255, 0.6);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .accordion-item {
     margin-bottom: 1rem;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(255, 62, 207, 0.5), 0 0 20px rgba(0, 240, 255, 0.5);
+    background: rgba(255 255 255 / 0.1);
   }
   .accordion-header {
-    cursor: pointer;
-    padding: 1.5rem 2rem;
+    background: linear-gradient(90deg, #ff3ecf, #00f0ff);
+    color: white;
+    padding: 1rem 1.5rem;
+    font-size: 1.3rem;
     font-weight: 900;
-    font-size: 1.6rem;
-    color: #ff3ecf;
-    text-shadow: 0 0 15px #ff3ecf;
+    cursor: pointer;
     user-select: none;
+    text-shadow: 0 0 8px #000;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   .accordion-header:hover,
   .accordion-header:focus {
-    color: #00f0ff;
+    background: linear-gradient(90deg, #ff63d7, #00eaff);
     outline: none;
-    text-shadow: 0 0 20px #00f0ff;
   }
-  .accordion-header:after {
-    content: '▼';
-    font-size: 1.2rem;
+  .accordion-header::after {
+    content: '+';
+    font-size: 1.6rem;
+    font-weight: 900;
     transition: transform 0.3s ease;
-    color: #ff3ecf;
   }
-  .accordion-header.active:after {
+  .accordion-header.active::after {
+    content: '-';
     transform: rotate(180deg);
-    color: #00f0ff;
   }
   .accordion-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.35s ease;
-    padding: 0 2rem;
-    background: rgba(255 255 255 / 0.05);
-    border-top: 1px solid rgba(255, 62, 207, 0.4);
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding: 0 1.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #eee;
+    line-height: 1.4;
   }
   .accordion-content.open {
-    padding: 1rem 2rem 2rem;
+    max-height: 1000px; /* plenty of height */
+    padding: 0.8rem 1.5rem 1.2rem;
   }
   .accordion-content ul {
-    list-style: none;
-    padding-left: 0;
-    color: #eee;
-    font-weight: 700;
-    font-size: 1.15rem;
-    line-height: 1.6;
+    margin: 0;
+    padding-left: 1.4rem;
+    list-style-type: disc;
   }
   .accordion-content ul li {
-    margin-bottom: 0.75rem;
-    position: relative;
-    padding-left: 30px;
-  }
-  /* Emoji icons with ::before */
-  .accordion-content ul li::before {
-    content: attr(data-icon);
-    position: absolute;
-    left: 0;
-    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
   }
 
   /* Safe & strong message */
   .safe-strong {
     text-align: center;
-    font-size: 1.35rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: #00f0ff;
     text-shadow: 0 0 15px #00f0ff;
-    max-width: 700px;
-    margin: 2rem auto 0;
-    line-height: 1.6;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
   }
 
   /* Payments & Social */
   .payments-social {
     text-align: center;
     background: rgba(255 255 255 / 0.15);
-    padding: 2rem;
+    padding: 1.5rem 2rem;
     border-radius: 25px;
     box-shadow: 0 0 20px rgba(255, 62, 207, 0.5), 0 0 30px rgba(0, 240, 255, 0.5);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
   .payments-social a {
     margin: 0 1rem;
     color: #00f0ff;
     font-weight: 900;
-    font-size: 1.1rem;
+    font-size: 1rem;
     text-shadow: 0 0 10px #00f0ff;
     transition: color 0.3s ease;
     text-decoration: none;
@@ -208,8 +224,8 @@
     text-shadow: 0 0 20px #ff3ecf;
   }
   .payments-social .contact {
-    margin-top: 1.25rem;
-    font-size: 1rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
     color: #ccc;
     font-weight: 600;
   }
@@ -225,101 +241,144 @@
     font-size: 0.9rem;
   }
 
+  /* Scroll-triggered fade-in animation */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Sticky Book Now button */
+  #stickyBookNow {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+    background: linear-gradient(90deg, #ff3ecf, #00f0ff);
+    color: white;
+    font-weight: 900;
+    font-size: 1rem;
+    padding: 0.8rem 2rem;
+    border-radius: 28px;
+    box-shadow: 0 0 25px #ff3ecf, 0 0 35px #00f0ff;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    transition: box-shadow 0.6s ease-in-out;
+  }
+  #stickyBookNow:hover,
+  #stickyBookNow:focus {
+    animation: pulseGlow 2s infinite alternate;
+    outline: none;
+  }
+
   /* Responsive */
   @media (max-width: 700px) {
-    .accordion-header {
-      font-size: 1.3rem;
+    .service-columns {
+      flex-direction: column;
     }
-    .accordion-content ul li {
+    .accordion-header {
+      font-size: 1.15rem;
+    }
+    .accordion-content {
+      font-size: 0.95rem;
+    }
+  }
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 2rem;
+    }
+    header p {
       font-size: 1rem;
+    }
+    .hero p {
+      font-size: 1rem;
+    }
+    .book-now-btn {
+      font-size: 1rem;
+      padding: 0.7rem 2.5rem;
+    }
+    .accordion-header {
+      font-size: 1.05rem;
+    }
+    .accordion-content {
+      font-size: 0.9rem;
     }
   }
 </style>
 </head>
 <body>
-<div class="container">
+
+<button id="stickyBookNow" aria-label="Book Now">Book Now</button>
+
+<div class="container" id="content">
 
   <header>
     <h1>Pure Steam Miami</h1>
     <p>We Bring Miami’s Heat to Your Car</p>
   </header>
 
-  <section class="hero">
+  <section class="hero fade-in" id="hero">
     <p>Steam Over Stains — Anywhere in Miami</p>
-    <button class="book-now-btn" aria-label="Book Now" onclick="location.href='booking.html'">Book Now</button>
+    <button class="book-now-btn" id="heroBookNow" aria-label="Book Now">Book Now</button>
   </section>
 
-  <section aria-label="What We Clean">
+  <section class="what-we-clean fade-in" id="whatWeClean" aria-label="What We Clean">
+    <h2>What We Clean — <span style="color:#00f0ff">Steam-Powered & Safe for All Surfaces</span></h2>
 
-    <h2 style="text-align:center; color:#ff3ecf; font-weight:900; text-shadow: 0 0 20px #ff3ecf; margin:3rem 0 2rem;">
-      What We Clean — <span style="color:#00f0ff;">Steam-Powered & Safe for All Surfaces</span>
-    </h2>
-
-    <!-- Accordion Vehicle -->
     <div class="accordion">
-      <button class="accordion-header" aria-expanded="false" aria-controls="vehiclesPanel" id="vehiclesBtn">
-        Vehicles
-      </button>
-      <div class="accordion-content" id="vehiclesPanel" role="region" aria-labelledby="vehiclesBtn">
-        <ul>
-          <li data-icon="🚗">Cars & Trucks</li>
-          <li data-icon="⛵">Boats</li>
-          <li data-icon="🏌️‍♂️">Golf Carts</li>
-          <li data-icon="🚜">Lawn Mowers</li>
-        </ul>
-      </div>
-    </div>
 
-    <!-- Accordion Home -->
-    <div class="accordion">
-      <button class="accordion-header" aria-expanded="false" aria-controls="homePanel" id="homeBtn">
-        Home & Indoor Surfaces
-      </button>
-      <div class="accordion-content" id="homePanel" role="region" aria-labelledby="homeBtn">
-        <ul>
-          <li data-icon="🪟">Windows</li>
-          <li data-icon="🧼">Tile & Grout</li>
-          <li data-icon="🛋️">Upholstery & Furniture</li>
-          <li data-icon="🛏️">Linen & Clothing</li>
-          <li data-icon="🍽️">Tables & Countertops</li>
-        </ul>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false" aria-controls="vehiclesContent" id="vehiclesHeader">
+          Vehicles
+        </button>
+        <div id="vehiclesContent" class="accordion-content" role="region" aria-labelledby="vehiclesHeader">
+          <ul>
+            <li>🚗 Cars & Trucks</li>
+            <li>⛵ Boats</li>
+            <li>🏌️‍♂️ Golf Carts</li>
+            <li>🚜 Lawn Mowers</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <!-- Accordion Stains -->
-    <div class="accordion">
-      <button class="accordion-header" aria-expanded="false" aria-controls="stainsPanel" id="stainsBtn">
-        Stubborn Stains & Problems
-      </button>
-      <div class="accordion-content" id="stainsPanel" role="region" aria-labelledby="stainsBtn">
-        <ul>
-          <li data-icon="🐾">Pet Feces</li>
-          <li data-icon="🍬">Gum in Carpet</li>
-          <li data-icon="🛠️">Rust on Houses & Sheds</li>
-          <li data-icon="🧽">Tough Stains</li>
-        </ul>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false" aria-controls="homeContent" id="homeHeader">
+          Home & Indoor Surfaces
+        </button>
+        <div id="homeContent" class="accordion-content" role="region" aria-labelledby="homeHeader">
+          <ul>
+            <li>🪟 Windows</li>
+            <li>🧼 Tile & Grout</li>
+            <li>🛋️ Upholstery & Furniture</li>
+            <li>🛏️ Linen & Clothing</li>
+            <li>🍽️ Tables & Countertops</li>
+          </ul>
+        </div>
       </div>
-    </div>
 
-    <!-- Accordion Other -->
-    <div class="accordion">
-      <button class="accordion-header" aria-expanded="false" aria-controls="otherPanel" id="otherBtn">
-        Other Services
-      </button>
-      <div class="accordion-content" id="otherPanel" role="region" aria-labelledby="otherBtn">
-        <ul>
-          <li data-icon="🧊">Glass Cleaning</li>
-          <li data-icon="🏭">Industrial Kitchens</li>
-          <li data-icon="🏠">In-home Cleaning (Bathrooms, etc.)</li>
-          <li data-icon="🚤">Boat Restoration</li>
-          <li data-icon="❄️">Air Conditioner Cleaning</li>
-          <li data-icon="🪨">Granite Surface Cleaning</li>
-        </ul>
+      <div class="accordion-item">
+        <button class="accordion-header" aria-expanded="false" aria-controls="stainsContent" id="stainsHeader">
+          Stubborn Stains & Problems
+        </button>
+        <div id="stainsContent" class="accordion-content" role="region" aria-labelledby="stainsHeader">
+          <ul>
+            <li>🐾 Pet Feces</li>
+            <li>🍬 Gum in Carpet</li>
+            <li>🛠️ Rust on Houses & Sheds</li>
+            <li>🧽 Tough Stains</li>
+          </ul>
+        </div>
       </div>
+
     </div>
 
     <p class="safe-strong">
-      Our steam cleaning <strong>kills 99.9% of bacteria</strong>, <span style="color:#00f0ff; font-weight: 900;">is chemical-free</span>, and <strong>safe on all materials</strong> — perfect for your home, vehicle, and everything in between.
+      Our steam cleaning <strong>kills 99.9% of bacteria</strong>, <span style="color:#00f0ff">is chemical-free</span>, and <strong>safe on all materials</strong> — perfect for your home, vehicle, and everything in between.
     </p>
   </section>
 
@@ -330,7 +389,7 @@
       <a href="mailto:puresteammiami@gmail.com">PayPal</a> |
       <a href="https://chime.com" target="_blank" rel="noopener noreferrer">Chime</a>
     </div>
-    <div class="contact" aria-label="Contact Information" style="margin-top:1rem;">
+    <div class="contact" aria-label="Contact Information">
       Call/Text: <strong>(786) 297-3068</strong> | Email: <a href="mailto:puresteammiami@gmail.com">puresteammiami@gmail.com</a>
     </div>
     <div class="qr-code" aria-label="QR code linking to Pure Steam Miami website" style="margin-top: 1.5rem;">
@@ -341,36 +400,47 @@
   <footer>
     © 2025 Pure Steam Miami. All rights reserved.
   </footer>
-
 </div>
 
 <script>
-  // Accordion toggle function
+  // Accordion toggle functionality
   document.querySelectorAll('.accordion-header').forEach(header => {
     header.addEventListener('click', () => {
-      const expanded = header.getAttribute('aria-expanded') === 'true';
-      header.setAttribute('aria-expanded', !expanded);
+      const content = header.nextElementSibling;
+      const isOpen = content.classList.contains('open');
+      header.setAttribute('aria-expanded', !isOpen);
       header.classList.toggle('active');
-      const content = document.getElementById(header.getAttribute('aria-controls'));
-      if (!expanded) {
-        content.style.maxHeight = content.scrollHeight + 'px';
-        content.classList.add('open');
-      } else {
-        content.style.maxHeight = null;
+      if (isOpen) {
         content.classList.remove('open');
+      } else {
+        content.classList.add('open');
       }
     });
   });
 
-  // Expand first accordion by default (optional)
-  // Uncomment if you want to auto-expand first section on load
-  /*
-  window.addEventListener('DOMContentLoaded', () => {
-    const firstHeader = document.querySelector('.accordion-header');
-    if (firstHeader) firstHeader.click();
+  // Sticky Book Now button click: scroll or redirect
+  document.getElementById('stickyBookNow').addEventListener('click', () => {
+    // For now, scroll to hero section
+    document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
   });
-  */
-</script>
 
+  // Hero Book Now button scroll as well
+  document.getElementById('heroBookNow').addEventListener('click', () => {
+    alert('Redirect to booking page or open booking modal!');
+    // window.location.href = 'booking.html'; // Uncomment and edit this for real booking page
+  });
+
+  // Scroll fade-in on load & scroll
+  function handleFadeIn() {
+    document.querySelectorAll('.fade-in').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        el.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', handleFadeIn);
+  window.addEventListener('load', handleFadeIn);
+</script>
 </body>
 </html>
