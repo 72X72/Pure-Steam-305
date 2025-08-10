@@ -9,9 +9,6 @@
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  integrity="sha512-pV8xMF3RgciSckIHChLvJ2QaHvEBoVf2ZkLRGTfWehC3U59p1lNz5Ef1aBzR3PjkBN7cHK92DXiUZF+Q4jsEgA=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
 />
 
 <style>
@@ -22,49 +19,56 @@
   body {
     margin: 0; padding: 0;
     font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
-    color: #222;
-    line-height: 1.5;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #eee;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
   a {
     text-decoration: none;
-    color: #0077b6;
+    color: #00f0ff;
     font-weight: 700;
+    transition: color 0.3s, text-shadow 0.3s;
   }
   a:hover, a:focus {
-    color: #e60039;
+    color: #ff3ecf;
+    text-shadow:
+      0 0 8px #ff3ecf,
+      0 0 15px #ff3ecf,
+      0 0 25px #00f0ff;
   }
 
   /* Header */
   header {
-    background: #fff;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-    padding: 1rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    background: #111;
+    box-shadow: 0 0 25px #ff3ecf;
+    padding: 1.5rem 1.5rem;
+    text-align: center;
   }
   header h1 {
     font-weight: 900;
-    color: #e60039; /* Miami Heat red */
+    color: #ff3ecf;
+    font-size: 2.8rem;
     margin: 0;
-    font-size: 2rem;
+    text-shadow:
+      0 0 8px #ff3ecf,
+      0 0 15px #ff3ecf;
   }
   header p {
     margin: 0.25rem 0 0.75rem;
     font-weight: 700;
-    color: #0077b6;
+    color: #00f0ff;
     font-style: italic;
+    font-size: 1.2rem;
+    text-shadow: 0 0 5px #00f0ff;
   }
 
   /* Main */
   main {
     flex: 1;
     max-width: 900px;
-    margin: 2rem auto;
+    margin: 2rem auto 4rem;
     padding: 0 1rem;
   }
 
@@ -74,31 +78,38 @@
     margin-bottom: 3rem;
   }
   .hero h2 {
-    font-size: 2.4rem;
+    font-size: 2.8rem;
     font-weight: 900;
-    color: #e60039;
+    color: #ff3ecf;
     margin-bottom: 0.5rem;
+    text-shadow: 0 0 15px #ff3ecf;
   }
   .hero p {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-style: italic;
-    color: #ff4081;
-    margin-bottom: 1.5rem;
+    color: #00f0ff;
+    margin-bottom: 1.8rem;
+    text-shadow: 0 0 10px #00f0ff;
   }
   .hero a.book-now-btn {
     background: linear-gradient(90deg, #ff3ecf, #00f0ff);
     padding: 1rem 3rem;
-    border-radius: 30px;
+    border-radius: 40px;
     color: white;
     font-weight: 900;
-    font-size: 1.2rem;
-    box-shadow: 0 0 20px #ff3ecf, 0 0 30px #00f0ff;
+    font-size: 1.4rem;
+    box-shadow:
+      0 0 20px #ff3ecf,
+      0 0 40px #00f0ff;
     text-transform: uppercase;
     transition: box-shadow 0.3s ease;
+    display: inline-block;
   }
   .hero a.book-now-btn:hover,
   .hero a.book-now-btn:focus {
-    box-shadow: 0 0 30px #ff3ecf, 0 0 50px #00f0ff;
+    box-shadow:
+      0 0 30px #ff3ecf,
+      0 0 60px #00f0ff;
     outline: none;
   }
 
@@ -108,17 +119,18 @@
     text-align: center;
   }
   section.what-we-clean h3 {
-    color: #e60039;
+    color: #ff3ecf;
     font-weight: 900;
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    text-shadow: 0 0 15px #ff3ecf;
   }
   section.what-we-clean ul {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 2rem;
+    gap: 3rem;
     padding: 0;
     margin: 0 auto;
     max-width: 900px;
@@ -126,22 +138,34 @@
   section.what-we-clean li {
     flex: 1 1 140px;
     text-align: center;
+    color: #eee;
+    cursor: default;
+    transition: transform 0.3s ease;
   }
   section.what-we-clean li i {
-    font-size: 3rem;
+    font-size: 4.5rem;
     color: #ff3ecf;
-    transition: color 0.3s;
+    filter: drop-shadow(0 0 5px #ff3ecf);
+    transition: color 0.3s ease, filter 0.3s ease;
   }
   section.what-we-clean li:nth-child(even) i {
     color: #00f0ff;
+    filter: drop-shadow(0 0 5px #00f0ff);
   }
   section.what-we-clean li p {
-    margin-top: 0.5rem;
-    font-weight: 700;
-    font-size: 1.1rem;
+    margin-top: 0.75rem;
+    font-weight: 900;
+    font-size: 1.2rem;
+    text-shadow: 0 0 5px #0008;
+  }
+  section.what-we-clean li:hover {
+    transform: scale(1.15);
   }
   section.what-we-clean li:hover i {
-    color: #e60039;
+    color: #fff;
+    filter:
+      drop-shadow(0 0 12px #ff3ecf)
+      drop-shadow(0 0 25px #00f0ff);
   }
 
   /* Payment & Social Section */
@@ -151,47 +175,57 @@
   }
   section.payment-social h3 {
     font-weight: 900;
-    color: #e60039;
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
+    color: #ff3ecf;
+    margin-bottom: 1.2rem;
+    font-size: 2rem;
+    text-shadow: 0 0 15px #ff3ecf;
   }
   .payments, .socials {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 2rem;
     flex-wrap: wrap;
-    font-weight: 700;
+    font-weight: 900;
+    font-size: 1.3rem;
   }
   .payments a, .socials a {
-    color: #0077b6;
+    color: #00f0ff;
     text-decoration: none;
-    font-weight: 900;
-    font-size: 1.1rem;
-    transition: color 0.3s;
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
   }
   .payments a:hover, .socials a:hover {
-    color: #e60039;
+    background-color: #ff3ecf;
+    color: white;
+    box-shadow:
+      0 0 10px #ff3ecf,
+      0 0 15px #00f0ff;
   }
+
   /* Contact info */
   footer {
-    background: #fff;
-    padding: 1rem 1.5rem;
+    background: #111;
+    padding: 1.5rem 1.5rem;
     text-align: center;
     font-size: 1rem;
-    color: #666;
-    box-shadow: 0 -3px 8px rgba(0,0,0,0.1);
+    color: #ccc;
+    box-shadow: 0 -3px 20px #ff3ecf;
   }
   footer .contact-info {
     margin-bottom: 0.5rem;
     font-weight: 700;
-    color: #e60039;
+    color: #00f0ff;
+    text-shadow: 0 0 8px #00f0ff;
   }
   footer .qr-code img {
-    width: 140px;
-    height: 140px;
-    border-radius: 15px;
-    border: 4px solid #0077b6;
-    box-shadow: 0 6px 12px rgba(0, 119, 182, 0.5);
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    border: 5px solid #ff3ecf;
+    box-shadow:
+      0 0 30px #ff3ecf,
+      0 0 50px #00f0ff;
   }
 
   /* Responsive */
@@ -199,6 +233,7 @@
     section.what-we-clean ul {
       flex-direction: column;
       align-items: center;
+      gap: 2rem;
     }
     section.what-we-clean li {
       flex: none;
@@ -227,11 +262,11 @@
       <li><i class="fas fa-car"></i><p>Cars</p></li>
       <li><i class="fas fa-truck"></i><p>Trucks</p></li>
       <li><i class="fas fa-ship"></i><p>Boats</p></li>
-      <li><i class="fas fa-kitchen-set"></i><p>Industrial Kitchens</p></li>
+      <li><i class="fas fa-burn"></i><p>Industrial Kitchens</p></li>
       <li><i class="fas fa-snowflake"></i><p>Air Conditioners</p></li>
       <li><i class="fas fa-gem"></i><p>Granite Surfaces</p></li>
-      <li><i class="fas fa-home"></i><p>In-Home Cleaning</p></li>
-      <li><i class="fas fa-tools"></i><p>Car Restoration</p></li>
+      <li><i class="fas fa-house"></i><p>In-Home Cleaning</p></li>
+      <li><i class="fas fa-wrench"></i><p>Car Restoration</p></li>
     </ul>
   </section>
 
