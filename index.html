@@ -1,423 +1,589 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Pure Steam Miami</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=" />
 <style>
+  /* Google font */
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&display=swap');
 
-  /* Base Reset */
-  *, *::before, *::after {
-    box-sizing: border-box;
+  :root{
+    --pink:#ff3ecf;
+    --blue:#00f0ff;
+    --bg:#140024;
+    --panel: rgba(255,255,255,0.06);
+    --text:#eee;
+    --muted:#ccc;
+    --gap:12px;
   }
-  body {
-    margin: 0; padding: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: #140024;
-    color: #eee;
-    min-height: 100vh;
-    scroll-behavior: smooth;
-    transition: background 0.5s, color 0.5s;
+
+  /* Basic reset */
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Montserrat,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.35;
+    scroll-behavior:smooth;
+    padding-bottom:96px; /* room for sticky */
   }
 
   /* Container */
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 2rem 1rem 4rem;
+  .wrap{
+    max-width:980px;
+    margin:0 auto;
+    padding:18px;
   }
 
   /* Header */
-  header {
-    text-align: center;
-    margin-bottom: 3rem;
+  header{
+    text-align:center;
+    margin-bottom:12px;
   }
-  header h1 {
-    font-size: 3rem;
-    font-weight: 900;
-    color: #ff3ecf;
-    text-shadow: 0 0 20px #ff3ecf;
-    margin-bottom: 0.25rem;
+  .brand{
+    font-size:2rem;
+    font-weight:900;
+    color:var(--pink);
+    margin:0;
+    text-shadow:0 0 14px rgba(255,62,207,0.45);
   }
-  header p {
-    font-size: 1.5rem;
-    font-style: italic;
-    color: #00f0ff;
-    text-shadow: 0 0 12px #00f0ff;
+  .tag{
+    margin-top:6px;
+    font-style:italic;
+    color:var(--blue);
+    font-weight:700;
+    text-shadow:0 0 8px rgba(0,240,255,0.22);
   }
+
+  /* Top controls */
+  .top-controls{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    align-items:center;
+    margin:14px 0 18px;
+  }
+  #darkToggle,#langSelect{
+    background:rgba(0,0,0,0.45);
+    border:1px solid rgba(255,255,255,0.06);
+    color:var(--text);
+    padding:8px 10px;
+    border-radius:10px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 6px 18px rgba(0,0,0,0.35);
+  }
+  #langSelect{appearance:none;padding:8px 12px}
 
   /* Hero */
-  .hero {
-    text-align: center;
-    margin-bottom: 3rem;
+  .hero{
+    text-align:center;
+    padding:14px;
+    border-radius:14px;
+    background:linear-gradient(180deg, rgba(255,62,207,0.06), rgba(0,240,255,0.02));
+    box-shadow:0 6px 20px rgba(0,0,0,0.35);
+    margin-bottom:18px;
   }
-  .hero p {
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: #eee;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 0 10px #ff3ecf;
+  .hero p{margin:8px 0 14px;font-weight:700;color:var(--text)}
+  .btn-primary{
+    display:inline-block;
+    background:linear-gradient(90deg,var(--pink),var(--blue));
+    color:#fff;
+    padding:10px 22px;
+    border-radius:28px;
+    font-weight:900;
+    letter-spacing:0.6px;
+    text-transform:uppercase;
+    border:none;
+    cursor:pointer;
+    box-shadow:0 8px 36px rgba(255,62,207,0.25),0 10px 50px rgba(0,240,255,0.18);
+    transition:transform .12s ease, box-shadow .2s ease;
   }
-  .book-now-btn {
-    background: linear-gradient(90deg, #ff3ecf, #00f0ff);
-    color: white;
-    font-weight: 900;
-    font-size: 1.3rem;
-    padding: 1rem 4rem;
-    border-radius: 30px;
-    box-shadow: 0 0 30px #ff3ecf, 0 0 40px #00f0ff;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    transition: box-shadow 0.6s ease-in-out;
-  }
-  .book-now-btn:hover,
-  .book-now-btn:focus {
-    box-shadow: 0 0 50px #ff3ecf, 0 0 70px #00f0ff;
-    outline: none;
-    animation: pulseGlow 2s infinite alternate;
-  }
-  @keyframes pulseGlow {
-    from { box-shadow: 0 0 40px #ff3ecf, 0 0 60px #00f0ff; }
-    to { box-shadow: 0 0 70px #ff3ecf, 0 0 90px #00f0ff; }
-  }
+  .btn-primary:active{transform:translateY(1px)}
+  .btn-primary:hover{box-shadow:0 12px 50px rgba(255,62,207,0.35),0 14px 70px rgba(0,240,255,0.2)}
 
-  /* Sticky Book Now button */
-  #stickyBookNow {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    z-index: 9999;
-    background: linear-gradient(90deg, #ff3ecf, #00f0ff);
-    color: white;
-    font-weight: 900;
-    font-size: 1.2rem;
-    padding: 1rem 2.5rem;
-    border-radius: 35px;
-    box-shadow: 0 0 25px #ff3ecf, 0 0 35px #00f0ff;
-    cursor: pointer;
-    border: none;
-    text-transform: uppercase;
-    transition: box-shadow 0.6s ease-in-out;
+  /* What we clean - accordion */
+  .section{margin:18px 0}
+  .panel{
+    background:var(--panel);
+    border-radius:12px;
+    padding:10px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.35);
   }
-  #stickyBookNow:hover,
-  #stickyBookNow:focus {
-    animation: pulseGlow 2s infinite alternate;
-    outline: none;
+  .accordion-item{margin-bottom:10px;overflow:hidden;border-radius:10px}
+  .acc-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    cursor:pointer;
+    padding:10px 12px;
+    background:linear-gradient(90deg,var(--pink),var(--blue));
+    color:#fff;
+    border-radius:10px;
+    font-weight:900;
   }
-
-  /* What We Clean Section */
-  .what-we-clean {
-    background: rgba(255 255 255 / 0.1);
-    border-radius: 25px;
-    box-shadow: 0 0 25px rgba(255, 62, 207, 0.6), 0 0 35px rgba(0, 240, 255, 0.6);
-    padding: 2rem;
-    margin-bottom: 3rem;
+  .acc-head span.title{font-size:1rem}
+  .acc-head span.icon{font-size:1.1rem;opacity:0.95}
+  .acc-body{
+    background:rgba(0,0,0,0.18);
+    color:var(--text);
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .32s ease, padding .32s ease;
+    padding:0 12px;
   }
-  .what-we-clean h2 {
-    font-size: 2.6rem;
-    font-weight: 900;
-    color: #ff3ecf;
-    text-shadow: 0 0 20px #ff3ecf;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-
-  /* Collapsible groups for services */
-  .service-group {
-    background: rgba(255 255 255 / 0.1);
-    margin-bottom: 1rem;
-    border-radius: 20px;
-    box-shadow: 0 0 15px rgba(255, 62, 207, 0.5), 0 0 25px rgba(0, 240, 255, 0.5);
-  }
-  .service-group button.toggle-btn {
-    width: 100%;
-    background: transparent;
-    border: none;
-    color: #ff3ecf;
-    font-weight: 900;
-    font-size: 1.6rem;
-    padding: 1rem 1.5rem;
-    text-align: left;
-    cursor: pointer;
-    text-shadow: 0 0 10px #ff3ecf;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 20px;
-  }
-  .service-group button.toggle-btn:focus {
-    outline: 3px solid #00f0ff;
-  }
-  .service-group button.toggle-btn .arrow {
-    transition: transform 0.3s ease;
-  }
-  .service-group button.toggle-btn[aria-expanded="true"] .arrow {
-    transform: rotate(90deg);
-  }
-  .service-list {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease;
-    padding: 0 1.5rem;
-    color: #eee;
-    font-weight: 700;
-    font-size: 1.15rem;
-    list-style: none;
-    margin: 0;
-  }
-  .service-list.open {
-    max-height: 500px; /* Enough to show all items */
-    margin-top: 1rem;
-  }
-  .service-list li {
-    margin-bottom: 0.7rem;
-    padding-left: 30px;
-    position: relative;
-  }
-  .service-list li::before {
-    content: attr(data-icon);
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-size: 1.3rem;
-  }
-
-  /* Safe & strong message */
-  .safe-strong {
-    text-align: center;
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: #00f0ff;
-    text-shadow: 0 0 15px #00f0ff;
-    max-width: 700px;
-    margin: 2rem auto 0;
-    line-height: 1.6;
-  }
-
-  /* Payments & Contact */
-  .pay-contact {
-    text-align: center;
-    background: rgba(255 255 255 / 0.15);
-    padding: 2rem;
-    border-radius: 25px;
-    box-shadow: 0 0 20px rgba(255, 62, 207, 0.5), 0 0 30px rgba(0, 240, 255, 0.5);
-    margin-bottom: 3rem;
-  }
-  .pay-contact .links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 1.1rem;
-  }
-  .pay-contact .links a {
-    color: #00f0ff;
-    text-decoration: none;
-    text-shadow: 0 0 10px #00f0ff;
-    transition: color 0.3s ease;
-  }
-  .pay-contact .links a:hover,
-  .pay-contact .links a:focus {
-    color: #ff3ecf;
-    outline: none;
-    text-shadow: 0 0 20px #ff3ecf;
-  }
-  .pay-contact .contact {
-    margin-top: 1rem;
-    font-weight: 600;
-    font-size: 1rem;
-    color: #666;
-  }
-  .pay-contact .contact a {
-    color: inherit;
-    text-decoration: none;
-  }
-  .pay-contact .contact strong {
-    color: #ff3ecf;
-    text-shadow: 0 0 8px #ff3ecf;
-  }
-
-  /* QR Code */
-  .qr-code {
-    margin-top: 1.5rem;
-  }
-  .qr-code img {
-    border-radius: 12px;
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    color: #999;
-    font-size: 0.9rem;
-  }
-
-  /* Scroll-triggered fade-in animation */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-  }
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .acc-body.open{padding:10px 12px 14px;max-height:420px}
+  .acc-body ul{margin:0;padding-left:1.1rem}
+  .acc-body li{margin:6px 0;font-weight:700}
 
   /* Counters */
-  .counters {
-    display: flex;
-    justify-content: space-around;
-    margin: 3rem 0;
-    gap: 2rem;
-    flex-wrap: wrap;
+  .counters{
+    display:flex;
+    gap:12px;
+    margin:16px 0;
   }
-  .counter {
-    background: rgba(255 255 255 / 0.1);
-    padding: 1.5rem 2rem;
-    border-radius: 20px;
-    box-shadow: 0 0 20px rgba(255, 62, 207, 0.6), 0 0 25px rgba(0, 240, 255, 0.6);
-    text-align: center;
-    flex: 1 1 150px;
-    min-width: 150px;
-    margin-bottom: 1rem;
+  .counter{
+    flex:1;
+    background:linear-gradient(180deg, rgba(255,62,207,0.03), rgba(0,240,255,0.02));
+    padding:12px;
+    border-radius:10px;
+    text-align:center;
+    font-weight:700;
+    box-shadow:0 6px 18px rgba(0,0,0,0.35);
   }
-  .counter h3 {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: #ff3ecf;
-    text-shadow: 0 0 15px #ff3ecf;
-    margin: 0 0 0.5rem;
+  .counter h3{font-size:1.6rem;margin:6px 0;color:var(--pink)}
+  .counter p{margin:0;color:var(--muted);font-weight:700}
+
+  /* Payments & contact */
+  .pay-contact{
+    display:flex;
+    gap:12px;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:12px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.03);
+    box-shadow:0 6px 18px rgba(0,0,0,0.35);
+    margin:18px 0;
   }
-  .counter p {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #eee;
+  .pay-contact .links{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  a.link{color:var(--blue);font-weight:900;text-decoration:none;padding:6px 8px;border-radius:8px}
+  a.link:hover{color:var(--pink);text-decoration:underline}
+
+  /* Footer */
+  footer{opacity:0.9;text-align:center;color:var(--muted);font-size:13px;margin-top:8px}
+
+  /* Sticky Book Now */
+  #stickyBook{
+    position:fixed;right:16px;bottom:16px;z-index:9999;
+    background:linear-gradient(90deg,var(--pink),var(--blue));
+    color:#fff;border:none;padding:10px 16px;border-radius:26px;font-weight:900;cursor:pointer;
+    box-shadow:0 14px 40px rgba(0,0,0,0.45),0 10px 30px rgba(255,62,207,0.12);
+  }
+  #stickyBook:active{transform:translateY(1px)}
+
+  /* Small screens adjustments */
+  @media (max-width:720px){
+    .counters{flex-direction:column}
+    .top-controls{flex-direction:row;gap:8px;flex-wrap:wrap;justify-content:center}
+    .brand{font-size:1.6rem}
+    .acc-head{font-size:0.95rem}
   }
 
-  /* Language switcher */
-  #langSwitcher {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: rgba(0,0,0,0.6);
-    border-radius: 12px;
-    box-shadow: 0 0 20px #ff3ecf;
-    padding: 0.5rem 1rem;
-    font-weight: 700;
-    color: #eee;
-    cursor: pointer;
-    user-select: none;
-    z-index: 10000;
+  /* Dark mode overrides */
+  body.dark{
+    --bg:#07000a;
+    --panel: rgba(255,255,255,0.03);
+    --text:#ddd;
+    background:#07000a;
   }
-  #langSwitcher select {
-    background: transparent;
-    border: none;
-    color: #eee;
-    font-weight: 700;
-    font-size: 1rem;
-    outline: none;
-    cursor: pointer;
-  }
+  body.dark .acc-body{background:rgba(255,255,255,0.03)}
+  /* subtle focus outlines for accessibility */
+  .acc-head:focus{outline:3px solid rgba(255,62,207,0.18)}
+  button:focus, select:focus{outline:3px solid rgba(0,240,255,0.12)}
+</style>
+</head>
+<body>
 
-  /* Lightbox Styles */
-  #lightboxOverlay {
-    position: fixed;
-    top:0; left:0; right:0; bottom:0;
-    background: rgba(0,0,0,0.85);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 100000;
-  }
-  #lightboxOverlay.active {
-    display: flex;
-  }
-  #lightboxOverlay img {
-    max-width: 90vw;
-    max-height: 90vh;
-    border-radius: 15px;
-    box-shadow: 0 0 30px #ff3ecf, 0 0 40px #00f0ff;
-  }
-  #lightboxOverlay .closeBtn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: #ff3ecf;
-    font-size: 2.5rem;
-    font-weight: 900;
-    cursor: pointer;
-    text-shadow: 0 0 15px #ff3ecf;
-    user-select: none;
-  }
+<!-- Sticky Book Now -->
+<button id="stickyBook" aria-label="Book Now">Book Now</button>
 
-  /* Gallery */
-  .gallery {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 3rem;
-  }
-  .gallery img {
-    width: 120px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 12px;
-    cursor: pointer;
-    box-shadow: 0 0 10px #00f0ff;
-    transition: box-shadow 0.3s ease;
-  }
-  .gallery img:hover,
-  .gallery img:focus {
-    box-shadow: 0 0 20px #ff3ecf;
-    outline: none;
-  }
+<div class="wrap" id="page">
 
-  /* Dark mode toggle */
-  #darkModeToggle {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background: rgba(0,0,0,0.6);
-    border-radius: 12px;
-    padding: 0.5rem 1rem;
-    color: #eee;
-    font-weight: 700;
-    cursor: pointer;
-    user-select: none;
-    z-index: 10000;
-    border: none;
-  }
+  <!-- Header -->
+  <header>
+    <h1 class="brand" data-i18="brand">Pure Steam Miami</h1>
+    <div class="tag" data-i18="tag">We Bring Miami’s Heat to Your Car</div>
 
-  /* Dark mode styles */
-  body.dark-mode {
-    background: #0a0014;
-    color: #bbb;
+    <div class="top-controls" style="margin-top:10px;">
+      <button id="darkToggle" aria-pressed="false">Dark Mode</button>
+      <select id="langSelect" aria-label="Select language">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="ht">Kreyòl</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <h2 id="hero-heading" data-i18="hero_head">Steam Over Stains — Anywhere in Miami</h2>
+    <p data-i18="hero_sub">Book your service today! Mobile steam cleaning for cars, boats, homes, and more.</p>
+    <div style="margin-top:12px">
+      <button class="btn-primary" id="bookNowHero">Book Now</button>
+    </div>
+  </section>
+
+  <!-- Counters -->
+  <div class="counters" aria-hidden="false">
+    <div class="counter" aria-label="cars cleaned">
+      <h3><span class="count" data-target="1520">0</span>+</h3>
+      <p data-i18="counter1">Cars Cleaned</p>
+    </div>
+    <div class="counter" aria-label="customers">
+      <h3><span class="count" data-target="870">0</span>+</h3>
+      <p data-i18="counter2">Happy Customers</p>
+    </div>
+    <div class="counter" aria-label="years">
+      <h3><span class="count" data-target="5">0</span>+</h3>
+      <p data-i18="counter3">Years Serving Miami</p>
+    </div>
+  </div>
+
+  <!-- What We Clean (Accordion) -->
+  <section class="section">
+    <div class="panel">
+      <h3 style="margin:6px 0 12px;font-weight:900;color:var(--pink)" data-i18="what_title">What We Clean — Steam-Powered & Safe</h3>
+
+      <!-- Vehicles -->
+      <div class="accordion-item">
+        <div tabindex="0" class="acc-head" data-acc="vehicles" role="button" aria-expanded="false">
+          <span class="title" data-i18="veh_title">Vehicles</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="acc-body" id="vehicles">
+          <ul>
+            <li data-i18="veh_1">🚗 Cars & Trucks</li>
+            <li data-i18="veh_2">⛵ Boats</li>
+            <li data-i18="veh_3">🏌️‍♂️ Golf Carts</li>
+            <li data-i18="veh_4">🚜 Lawn Mowers</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- In-Home -->
+      <div class="accordion-item">
+        <div tabindex="0" class="acc-head" data-acc="home" role="button" aria-expanded="false">
+          <span class="title" data-i18="home_title">Home & Indoor Surfaces</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="acc-body" id="home">
+          <ul>
+            <li data-i18="home_1">🪟 Windows</li>
+            <li data-i18="home_2">🧼 Tile & Grout</li>
+            <li data-i18="home_3">🛋️ Upholstery & Furniture</li>
+            <li data-i18="home_4">🛏️ Linen & Clothing</li>
+            <li data-i18="home_5">🍽️ Tables & Countertops</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Stains -->
+      <div class="accordion-item">
+        <div tabindex="0" class="acc-head" data-acc="stains" role="button" aria-expanded="false">
+          <span class="title" data-i18="stain_title">Stubborn Stains & Problems</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="acc-body" id="stains">
+          <ul>
+            <li data-i18="stain_1">🐾 Pet Feces</li>
+            <li data-i18="stain_2">🍬 Gum in Carpet</li>
+            <li data-i18="stain_3">🛠️ Rust on Houses & Sheds</li>
+            <li data-i18="stain_4">🧽 Tough Stains (oil, grease)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Other compact -->
+      <div class="accordion-item">
+        <div tabindex="0" class="acc-head" data-acc="other" role="button" aria-expanded="false">
+          <span class="title" data-i18="other_title">Other Services</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="acc-body" id="other">
+          <ul>
+            <li data-i18="other_1">🏭 Industrial & Kitchen Cleaning</li>
+            <li data-i18="other_2">🧊 Glass & Window Restoration</li>
+            <li data-i18="other_3">🚤 Boat Detailing & Restoration</li>
+            <li data-i18="other_4">❄️ A/C & Vent Cleaning</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Payments & Contact -->
+  <section class="pay-contact">
+    <div style="font-weight:900;margin-bottom:6px" data-i18="pay_title">Payment Methods & Social</div>
+    <div class="links">
+      <a class="link" target="_blank" rel="noopener" href="https://cash.app/$puresteammiami">Cash App</a>
+      <a class="link" href="mailto:puresteammiami@gmail.com">PayPal (email)</a>
+      <a class="link" target="_blank" rel="noopener" href="https://chime.com">Chime</a>
+      <a class="link" target="_blank" rel="noopener" href="https://facebook.com/Puresteammiami">Facebook</a>
+      <a class="link" target="_blank" rel="noopener" href="https://instagram.com/puresteammiami">Instagram</a>
+      <a class="link" target="_blank" rel="noopener" href="https://tiktok.com/@puresteammiami">TikTok</a>
+    </div>
+
+    <div style="margin-top:10px" class="contact">
+      <div><strong data-i18="call_label">Call/Text:</strong> <a class="link" href="tel:+17862973068">(786) 297-3068</a></div>
+      <div style="margin-top:6px"><strong data-i18="email_label">Email:</strong> <a class="link" href="mailto:puresteammiami@gmail.com">puresteammiami@gmail.com</a></div>
+    </div>
+
+    <div style="margin-top:12px">
+      <img alt="QR code linking to Pure Steam Miami website" src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2F72x72.github.io%2FPure-Steam-305%2F&size=140x140" style="border-radius:8px;border:3px solid rgba(0,240,255,0.12)" />
+    </div>
+  </section>
+
+  <footer>
+    <div data-i18="copyright">© 2025 Pure Steam Miami. All rights reserved.</div>
+  </footer>
+
+</div>
+
+<script>
+/* ---------- TRANSLATIONS ---------- */
+const i18n = {
+  en: {
+    brand: "Pure Steam Miami",
+    tag: "We Bring Miami’s Heat to Your Car",
+    hero_head: "Steam Over Stains — Anywhere in Miami",
+    hero_sub: "Book your service today! Mobile steam cleaning for cars, boats, homes, and more.",
+    what_title: "What We Clean — Steam-Powered & Safe",
+    veh_title: "Vehicles",
+    veh_1: "🚗 Cars & Trucks",
+    veh_2: "⛵ Boats",
+    veh_3: "🏌️‍♂️ Golf Carts",
+    veh_4: "🚜 Lawn Mowers",
+    home_title: "Home & Indoor Surfaces",
+    home_1: "🪟 Windows",
+    home_2: "🧼 Tile & Grout",
+    home_3: "🛋️ Upholstery & Furniture",
+    home_4: "🛏️ Linen & Clothing",
+    home_5: "🍽️ Tables & Countertops",
+    stain_title: "Stubborn Stains & Problems",
+    stain_1: "🐾 Pet Feces",
+    stain_2: "🍬 Gum in Carpet",
+    stain_3: "🛠️ Rust on Houses & Sheds",
+    stain_4: "🧽 Tough Stains (oil, grease)",
+    other_title: "Other Services",
+    other_1: "🏭 Industrial & Kitchen Cleaning",
+    other_2: "🧊 Glass & Window Restoration",
+    other_3: "🚤 Boat Detailing & Restoration",
+    other_4: "❄️ A/C & Vent Cleaning",
+    counter1: "Cars Cleaned",
+    counter2: "Happy Customers",
+    counter3: "Years Serving Miami",
+    pay_title: "Payment Methods & Social",
+    call_label: "Call/Text:",
+    email_label: "Email:",
+    copyright: "© 2025 Pure Steam Miami. All rights reserved."
+  },
+  es: {
+    brand: "Pure Steam Miami",
+    tag: "Llevamos el calor de Miami a tu coche",
+    hero_head: "Vapor sobre manchas — en cualquier lugar de Miami",
+    hero_sub: "Reserva tu servicio hoy. Limpieza a vapor móvil para coches, barcos, casas y más.",
+    what_title: "Lo que limpiamos — A vapor y seguro",
+    veh_title: "Vehículos",
+    veh_1: "🚗 Coches y Camiones",
+    veh_2: "⛵ Barcos",
+    veh_3: "🏌️‍♂️ Carritos de Golf",
+    veh_4: "🚜 Cortadoras de Césped",
+    home_title: "Hogar y Superficies Interiores",
+    home_1: "🪟 Ventanas",
+    home_2: "🧼 Azulejos y Lechada",
+    home_3: "🛋️ Tapicería y Muebles",
+    home_4: "🛏️ Ropa de Cama y Ropa",
+    home_5: "🍽️ Mesas y Encimeras",
+    stain_title: "Manchas y Problemas Difíciles",
+    stain_1: "🐾 Excremento de Mascotas",
+    stain_2: "🍬 Chicle en la Alfombra",
+    stain_3: "🛠️ Óxido en Casas y Cobertizos",
+    stain_4: "🧽 Manchas Difíciles (aceite, grasa)",
+    other_title: "Otros Servicios",
+    other_1: "🏭 Limpieza Industrial y de Cocinas",
+    other_2: "🧊 Restauración de Vidrios y Ventanas",
+    other_3: "🚤 Detallado y Restauración de Barcos",
+    other_4: "❄️ Limpieza de A/C y Conductos",
+    counter1: "Coches limpiados",
+    counter2: "Clientes satisfechos",
+    counter3: "Años Sirviendo Miami",
+    pay_title: "Métodos de Pago y Redes",
+    call_label: "Llamar/Texto:",
+    email_label: "Correo:",
+    copyright: "© 2025 Pure Steam Miami. Todos los derechos reservados."
+  },
+  ht: {
+    brand: "Pure Steam Miami",
+    tag: "Nou pote chalè Miami nan machin ou",
+    hero_head: "Lave ak vapè sou tach — nenpòt kote nan Miami",
+    hero_sub: "Resevye sèvis ou jodi a! Netwayaj vapè mobil pou machin, bato, kay, ak plis.",
+    what_title: "Sa nou netwaye — Vapè & Sekirite",
+    veh_title: "Machin",
+    veh_1: "🚗 Machin ak Kamyon",
+    veh_2: "⛵ Bato",
+    veh_3: "🏌️‍♂️ Kòt gòlf",
+    veh_4: "🚜 Tonde zèb",
+    home_title: "Kay & Sifas Andedan",
+    home_1: "🪟 Fenèt",
+    home_2: "🧼 Twil & Jwenti",
+    home_3: "🛋️ Tapi & Mèb",
+    home_4: "🛏️ Dra & Rad",
+    home_5: "🍽️ Tab & Kontwa",
+    stain_title: "Tach Difisil & Pwoblèm",
+    stain_1: "🐾 Dèyè bèt kay",
+    stain_2: "🍬 Chiklet nan tapi",
+    stain_3: "🛠️ Rist sou kay & abri",
+    stain_4: "🧽 Tach difisil (lwil, grès)",
+    other_title: "Lòt Sèvis",
+    other_1: "🏭 Netwayaj endistriyèl & kwizin",
+    other_2: "🧊 Restauration vè & fenèt",
+    other_3: "🚤 Detay & Restauration bato",
+    other_4: "❄️ Netwayaj A/C & vantilasyon",
+    counter1: "Machin netwaye",
+    counter2: "Kliyan kontan",
+    counter3: "Ane nan sèvis Miami",
+    pay_title: "Metòd Peman & Sosyal",
+    call_label: "Rele/Tekste:",
+    email_label: "Imèl:",
+    copyright: "© 2025 Pure Steam Miami. Tout dwa rezève."
   }
-  body.dark-mode header h1 {
-    color: #ff6de0;
-    text-shadow: 0 0 30px #ff6de0;
+};
+
+/* Apply language to page */
+function applyLang(lang){
+  document.querySelectorAll('[data-i18]').forEach(el=>{
+    const key = el.getAttribute('data-i18');
+    if(i18n[lang] && i18n[lang][key]) el.textContent = i18n[lang][key];
+  });
+  // update counters labels
+  document.querySelectorAll('[data-i18-counter]').forEach(el=>{
+    const k = el.getAttribute('data-i18-counter');
+    if(i18n[lang] && i18n[lang][k]) el.textContent = i18n[lang][k];
+  });
+}
+
+/* initial language from select or saved */
+const langSelect = document.getElementById('langSelect');
+const savedLang = localStorage.getItem('psm_lang') || 'en';
+langSelect.value = savedLang;
+applyLang(savedLang);
+
+/* handle language change */
+langSelect.addEventListener('change', (e)=>{
+  const val = e.target.value;
+  applyLang(val);
+  localStorage.setItem('psm_lang', val);
+});
+
+/* Dark mode persistent toggle */
+const darkToggle = document.getElementById('darkToggle');
+const body = document.body;
+const darkSaved = localStorage.getItem('psm_dark') === '1';
+if(darkSaved){ body.classList.add('dark'); darkToggle.setAttribute('aria-pressed','true') }
+darkToggle.addEventListener('click', ()=>{
+  const isDark = body.classList.toggle('dark');
+  darkToggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+  localStorage.setItem('psm_dark', isDark ? '1' : '0');
+});
+
+/* Accordion behavior - tap to open */
+document.querySelectorAll('.acc-head').forEach(head=>{
+  head.addEventListener('click', toggleAcc);
+  head.addEventListener('keydown', function(e){ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); toggleAcc.call(this); }});
+});
+function toggleAcc(){
+  const head = this;
+  const bodyEl = head.nextElementSibling;
+  const open = bodyEl.classList.contains('open');
+  // close other accordions (optional) - keep only one open to save space
+  document.querySelectorAll('.acc-body.open').forEach(b=>{
+    if(b !== bodyEl){ b.classList.remove('open'); b.previousElementSibling.setAttribute('aria-expanded','false'); b.previousElementSibling.classList.remove('active') }
+  });
+  if(open){
+    bodyEl.classList.remove('open');
+    head.setAttribute('aria-expanded','false');
+    head.classList.remove('active');
+  } else {
+    bodyEl.classList.add('open');
+    head.setAttribute('aria-expanded','true');
+    head.classList.add('active');
   }
-  body.dark-mode header p {
-    color: #36eaff;
-    text-shadow: 0 0 15px #36eaff;
+}
+
+/* Smooth scroll for book buttons: hero & sticky */
+document.getElementById('bookNowHero').addEventListener('click', ()=>{
+  location.href = 'booking.html'; // redirect to booking page; change if using modal
+});
+document.getElementById('stickyBook').addEventListener('click', ()=>{
+  // scroll to top hero, then redirect - easier on mobile: first scroll then a short delay to allow user to see hero
+  document.getElementById('hero-heading').scrollIntoView({behavior:'smooth',block:'center'});
+  setTimeout(()=> location.href = 'booking.html', 650);
+});
+
+/* Animated counters when visible */
+const counters = document.querySelectorAll('.count');
+let countersRun = false;
+function runCounters(){
+  if(countersRun) return;
+  const rect = document.querySelector('.counters').getBoundingClientRect();
+  if(rect.top < window.innerHeight - 80){
+    counters.forEach(c=>{
+      const target = +c.getAttribute('data-target');
+      animateCount(c, target, 1400);
+    });
+    countersRun = true;
   }
-  body.dark-mode .book-now-btn,
-  body.dark-mode #stickyBookNow {
-    background: linear-gradient(90deg, #ff6de0, #36eaff);
-    box-shadow: 0 0 35px #ff6de0, 0 0 50px #36eaff;
-  }
-  body.dark-mode .book-now-btn:hover,
-  body.dark-mode #stickyBookNow:hover {
-    box-shadow: 0 0 60px #ff6de0, 0 0 80px #36eaff;
-  }
-  body.dark-mode .what-we-clean,
-  body.dark-mode .pay-contact,
-  body.dark-mode .counter {
-    background: rgba(255 255 255 / 0.05);
-    box-shadow: 0 0 25px rgba(255, 105, 255, 0.5), 0 0 35px rgba(0, 210, 255, 0.5);
-  }
-  body.dark-mode .service-group {
+}
+function animateCount(el, to, duration){
+  const start = 0;
+  const stepTime = Math.max(20, Math.floor(duration / Math.max(1,to)));
+  let current = start;
+  const timer = setInterval(()=>{
+    current += 1;
+    el.textContent = current;
+    if(current >= to){ clearInterval(timer); el.textContent = to; }
+  }, stepTime);
+}
+window.addEventListener('scroll', runCounters);
+window.addEventListener('load', runCounters);
+window.addEventListener('resize', runCounters);
+
+/* Accessibility: allow language and dark toggle via keyboard */
+langSelect.addEventListener('keyup', function(e){ if(e.key==='Enter') this.dispatchEvent(new Event('change')) });
+
+/* small defensive: if booking page doesn't exist, show alert instead */
+function checkBookingExists(){
+  // We can't reliably check remote existence from client without CORS; assume booking.html will be provided.
+}
+
+/* On first load, ensure accordions are collapsed and counters set to 0 */
+document.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('.acc-body').forEach(b=>b.classList.remove('open'));
+  document.querySelectorAll('.count').forEach(c=>c.textContent = '0');
+  // ensure language applied for any attributes that were not initially set
+  applyLang(langSelect.value);
+});
+
+</script>
+</body>
+</html>
