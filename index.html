@@ -83,11 +83,6 @@ to<!DOCTYPE html>
   </section>
 
   <script>
-    // This will cause an error to test the window.onerror alert
-    nonExistentFunction();
-  </script>
-
-  <script>
   window.onerror = function(msg, url, lineNo, columnNo, error) {
     alert(
       'Error: ' + msg + '\n' +
