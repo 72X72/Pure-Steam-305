@@ -1,332 +1,457 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pure Steam Miami</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&display=swap');
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pure Steam Miami</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&display=swap');
 
-    /* Base & Reset */
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      margin: 0;
-      background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
-      font-family: 'Montserrat', sans-serif;
-      color: #222;
-      min-height: 100vh;
-      display: flex;
+  /* Base Reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #140024;
+    color: #eee;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    transition: background 0.5s, color 0.5s;
+  }
+
+  /* Container */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+  }
+
+  /* Header */
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  header h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #ff3ecf;
+    text-shadow: 0 0 20px #ff3ecf;
+    margin-bottom: 0.25rem;
+  }
+  header p {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: #00f0ff;
+    text-shadow: 0 0 12px #00f0ff;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .hero p {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #eee;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px #ff3ecf;
+  }
+  .book-now-btn {
+    background: linear-gradient(90deg, #ff3ecf, #00f0ff);
+    color: white;
+    font-weight: 900;
+    font-size: 1.3rem;
+    padding: 1rem 4rem;
+    border-radius: 30px;
+    box-shadow: 0 0 30px #ff3ecf, 0 0 40px #00f0ff;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 0.6s ease-in-out;
+  }
+  .book-now-btn:hover,
+  .book-now-btn:focus {
+    box-shadow: 0 0 50px #ff3ecf, 0 0 70px #00f0ff;
+    outline: none;
+    animation: pulseGlow 2s infinite alternate;
+  }
+
+  @keyframes pulseGlow {
+    from { box-shadow: 0 0 40px #ff3ecf, 0 0 60px #00f0ff; }
+    to { box-shadow: 0 0 70px #ff3ecf, 0 0 90px #00f0ff; }
+  }
+
+  /* Sticky Book Now button */
+  #stickyBookNow {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+    background: linear-gradient(90deg, #ff3ecf, #00f0ff);
+    color: white;
+    font-weight: 900;
+    font-size: 1.2rem;
+    padding: 1rem 2.5rem;
+    border-radius: 35px;
+    box-shadow: 0 0 25px #ff3ecf, 0 0 35px #00f0ff;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    transition: box-shadow 0.6s ease-in-out;
+  }
+  #stickyBookNow:hover,
+  #stickyBookNow:focus {
+    animation: pulseGlow 2s infinite alternate;
+    outline: none;
+  }
+
+  /* What We Clean Section */
+  .what-we-clean {
+    background: rgba(255 255 255 / 0.1);
+    border-radius: 25px;
+    box-shadow: 0 0 25px rgba(255, 62, 207, 0.6), 0 0 35px rgba(0, 240, 255, 0.6);
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
+  .what-we-clean h2 {
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: #ff3ecf;
+    text-shadow: 0 0 20px #ff3ecf;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .service-columns {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+  }
+  .service-group {
+    flex: 1;
+    background: rgba(255 255 255 / 0.1);
+    padding: 1.75rem 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(255, 62, 207, 0.5), 0 0 25px rgba(0, 240, 255, 0.5);
+  }
+  .service-group h3 {
+    color: #ff3ecf;
+    font-weight: 900;
+    font-size: 1.6rem;
+    margin-bottom: 1.25rem;
+    text-shadow: 0 0 10px #ff3ecf;
+    text-align: center;
+  }
+  .service-group ul {
+    list-style: none;
+    padding-left: 0;
+    color: #eee;
+    font-weight: 700;
+    font-size: 1.15rem;
+  }
+  .service-group ul li {
+    margin-bottom: 14px;
+    position: relative;
+    padding-left: 30px;
+  }
+  /* Using emoji for icons */
+  .service-group ul li::before {
+    content: attr(data-icon);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.3rem;
+  }
+
+  /* Safe & strong message */
+  .safe-strong {
+    text-align: center;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #00f0ff;
+    text-shadow: 0 0 15px #00f0ff;
+    max-width: 700px;
+    margin: 2rem auto 0;
+    line-height: 1.6;
+  }
+
+  /* Payments & Social */
+  .payments-social {
+    text-align: center;
+    background: rgba(255 255 255 / 0.15);
+    padding: 2rem;
+    border-radius: 25px;
+    box-shadow: 0 0 20px rgba(255, 62, 207, 0.5), 0 0 30px rgba(0, 240, 255, 0.5);
+    margin-bottom: 3rem;
+  }
+  .payments-social a {
+    margin: 0 1rem;
+    color: #00f0ff;
+    font-weight: 900;
+    font-size: 1.1rem;
+    text-shadow: 0 0 10px #00f0ff;
+    transition: color 0.3s ease;
+    text-decoration: none;
+  }
+  .payments-social a:hover,
+  .payments-social a:focus {
+    color: #ff3ecf;
+    outline: none;
+    text-shadow: 0 0 20px #ff3ecf;
+  }
+  .payments-social .contact {
+    margin-top: 1.25rem;
+    font-size: 1rem;
+    color: #ccc;
+    font-weight: 600;
+  }
+  .payments-social .contact strong {
+    color: #ff3ecf;
+    text-shadow: 0 0 8px #ff3ecf;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    color: #999;
+    font-size: 0.9rem;
+  }
+
+  /* Scroll-triggered fade-in animation */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Counters */
+  .counters {
+    display: flex;
+    justify-content: space-around;
+    margin: 3rem 0;
+    gap: 2rem;
+  }
+  .counter {
+    background: rgba(255 255 255 / 0.1);
+    padding: 1.5rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255, 62, 207, 0.6), 0 0 25px rgba(0, 240, 255, 0.6);
+    text-align: center;
+    flex: 1;
+  }
+  .counter h3 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #ff3ecf;
+    text-shadow: 0 0 15px #ff3ecf;
+    margin: 0 0 0.5rem;
+  }
+  .counter p {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #eee;
+  }
+
+  /* Language switcher */
+  #langSwitcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 12px;
+    box-shadow: 0 0 20px #ff3ecf;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    color: #eee;
+    cursor: pointer;
+    user-select: none;
+    z-index: 10000;
+  }
+  #langSwitcher select {
+    background: transparent;
+    border: none;
+    color: #eee;
+    font-weight: 700;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+  }
+
+  /* Lightbox Styles */
+  #lightboxOverlay {
+    position: fixed;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100000;
+  }
+  #lightboxOverlay.active {
+    display: flex;
+  }
+  #lightboxOverlay img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 15px;
+    box-shadow: 0 0 30px #ff3ecf, 0 0 40px #00f0ff;
+  }
+  #lightboxOverlay .closeBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #ff3ecf;
+    font-size: 2.5rem;
+    font-weight: 900;
+    cursor: pointer;
+    text-shadow: 0 0 15px #ff3ecf;
+    user-select: none;
+  }
+
+  /* Gallery */
+  .gallery {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .gallery img {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00f0ff;
+    transition: box-shadow 0.3s ease;
+  }
+  .gallery img:hover,
+  .gallery img:focus {
+    box-shadow: 0 0 20px #ff3ecf;
+    outline: none;
+  }
+
+  /* Dark mode toggle */
+  #darkModeToggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    color: #eee;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+    z-index: 10000;
+  }
+
+  /* Dark mode styles */
+  body.dark-mode {
+    background: #0a0014;
+    color: #bbb;
+  }
+  body.dark-mode header h1 {
+    color: #ff6de0;
+    text-shadow: 0 0 30px #ff6de0;
+  }
+  body.dark-mode header p {
+    color: #36eaff;
+    text-shadow: 0 0 15px #36eaff;
+  }
+  body.dark-mode .book-now-btn,
+  body.dark-mode #stickyBookNow {
+    background: linear-gradient(90deg, #ff6de0, #36eaff);
+    box-shadow: 0 0 35px #ff6de0, 0 0 50px #36eaff;
+  }
+  body.dark-mode .book-now-btn:hover,
+  body.dark-mode #stickyBookNow:hover {
+    box-shadow: 0 0 60px #ff6de0, 0 0 80px #36eaff;
+  }
+  body.dark-mode .what-we-clean,
+  body.dark-mode .payments-social,
+  body.dark-mode .counter {
+    background: rgba(255 255 255 / 0.05);
+    box-shadow: 0 0 25px rgba(255, 105, 255, 0.5), 0 0 35px rgba(0, 210, 255, 0.5);
+  }
+  body.dark-mode .service-group {
+    background: rgba(255 255 255 / 0.05);
+    box-shadow: 0 0 15px rgba(255, 105, 255, 0.4), 0 0 25px rgba(0, 210, 255, 0.4);
+  }
+  body.dark-mode .payments-social a {
+    color: #36eaff;
+    text-shadow: 0 0 20px #36eaff;
+  }
+  body.dark-mode .payments-social a:hover,
+  body.dark-mode .payments-social a:focus {
+    color: #ff6de0;
+    text-shadow: 0 0 30px #ff6de0;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .service-columns {
       flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem 4rem;
     }
-    a {
-      text-decoration: none;
-      color: #00f0ff;
-      font-weight: 700;
-      transition: color 0.3s ease, text-shadow 0.3s ease;
+    .counters {
+      flex-direction: column;
     }
-    a:hover, a:focus {
-      color: #ff3ecf;
-      text-shadow:
-        0 0 5px #ff3ecf,
-        0 0 15px #00f0ff;
-      outline: none;
-    }
-
-    header {
-      max-width: 900px;
-      text-align: center;
-      margin-bottom: 3rem;
-    }
+  }
+  @media (max-width: 480px) {
     header h1 {
-      font-size: 3rem;
-      font-weight: 900;
-      color: #ff3ecf;
-      text-shadow: 0 0 15px #ff3ecf;
-      margin-bottom: 0.25rem;
+      font-size: 2.2rem;
     }
     header p {
-      font-size: 1.5rem;
-      font-style: italic;
-      color: #00f0ff;
-      text-shadow: 0 0 10px #00f0ff;
-    }
-
-    .hero {
-      max-width: 900px;
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    .hero p {
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      color: #222;
-      text-shadow: 0 0 8px #ff3ecf;
-    }
-    .book-now-btn {
-      background: linear-gradient(90deg, #ff3ecf, #00f0ff);
-      color: white;
-      font-weight: 900;
-      font-size: 1.3rem;
-      padding: 1rem 4rem;
-      border-radius: 30px;
-      box-shadow: 0 0 25px #ff3ecf, 0 0 35px #00f0ff;
-      transition: box-shadow 0.3s ease;
-      display: inline-block;
-      text-transform: uppercase;
-    }
-    .book-now-btn:hover, .book-now-btn:focus {
-      box-shadow: 0 0 40px #ff3ecf, 0 0 60px #00f0ff;
-      outline: none;
-    }
-
-    /* What We Clean Section */
-    .what-we-clean {
-      max-width: 900px;
-      width: 100%;
-      margin: 4rem auto 5rem;
-      padding: 2rem;
-      background: rgba(255 255 255 / 0.15);
-      border-radius: 25px;
-      box-shadow: 0 0 25px rgba(255, 62, 207, 0.6), 0 0 35px rgba(0, 240, 255, 0.6);
-      color: #eee;
-      font-weight: 600;
-      font-size: 1.1rem;
-      line-height: 1.7;
+      font-size: 1.2rem;
     }
     .what-we-clean h2 {
-      font-size: 2.6rem;
-      font-weight: 900;
-      text-align: center;
-      margin-bottom: 2.5rem;
-      color: #ff3ecf;
-      text-shadow: 0 0 20px #ff3ecf;
-    }
-    .what-we-clean .highlight {
-      color: #00f0ff;
-      text-shadow: 0 0 15px #00f0ff;
-    }
-    .service-columns {
-      display: flex;
-      justify-content: space-between;
-      gap: 3rem;
-      margin-bottom: 3rem;
-    }
-    .service-group {
-      flex: 1;
-      padding: 1.75rem 1.5rem;
-      background: rgba(255 255 255 / 0.1);
-      border-radius: 20px;
-      box-shadow: 0 0 15px rgba(255, 62, 207, 0.5), 0 0 25px rgba(0, 240, 255, 0.5);
+      font-size: 2rem;
     }
     .service-group h3 {
-      font-size: 1.6rem;
-      font-weight: 900;
-      margin-bottom: 1.5rem;
-      color: #ff3ecf;
-      text-shadow: 0 0 10px #ff3ecf;
-      text-align: center;
+      font-size: 1.3rem;
     }
-    .service-group ul {
-      list-style: none;
-      padding-left: 0;
+    .gallery img {
+      width: 90px;
+      height: 60px;
     }
-    .service-group ul li {
-      margin-bottom: 14px;
-      font-weight: 700;
-      font-size: 1.15rem;
-      padding-left: 30px;
-      position: relative;
-      color: #eee;
-    }
-    /* Using emoji icons, so no custom ::before needed */
-
-    .safe-strong {
-      text-align: center;
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: #00f0ff;
-      text-shadow: 0 0 15px #00f0ff;
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /* Payment & Social Section */
-    .payments-social {
-      max-width: 900px;
-      width: 100%;
-      background: rgba(255 255 255 / 0.15);
-      border-radius: 25px;
-      padding: 2rem;
-      box-shadow: 0 0 20px rgba(255, 62, 207, 0.5), 0 0 30px rgba(0, 240, 255, 0.5);
-      margin-bottom: 3rem;
-      text-align: center;
-      color: #eee;
-      font-weight: 700;
-      font-size: 1.2rem;
-      line-height: 1.5;
-    }
-    .payments-social a {
-      margin: 0 1rem;
-      display: inline-block;
-      color: #00f0ff;
-      font-weight: 900;
-      font-size: 1.1rem;
-      text-shadow: 0 0 10px #00f0ff;
-      transition: color 0.3s ease;
-    }
-    .payments-social a:hover,
-    .payments-social a:focus {
-      color: #ff3ecf;
-      outline: none;
-    }
-    .payments-social .contact {
-      margin-top: 1.25rem;
-      font-size: 1rem;
-      color: #ccc;
-      font-weight: 600;
-    }
-    .payments-social .contact strong {
-      color: #ff3ecf;
-      text-shadow: 0 0 6px #ff3ecf;
-    }
-
-    /* Footer */
-    footer {
-      color: #999;
-      font-size: 0.9rem;
-      text-align: center;
-      margin-top: 2rem;
-    }
-
-    /* Miami Vice neon colors */
-    :root {
-      --pink: #ff3ecf;
-      --blue: #00f0ff;
-    }
-
-    /* Sticky Book Now Button */
-    #stickyBookNow {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: linear-gradient(90deg, var(--pink), var(--blue));
-      color: white;
-      font-weight: 900;
-      padding: 1rem 2.5rem;
-      border-radius: 30px;
-      text-transform: uppercase;
-      font-size: 1.2rem;
-      box-shadow:
-        0 0 8px var(--pink),
-        0 0 15px var(--blue);
-      cursor: pointer;
-      z-index: 9999;
-      transition: box-shadow 0.3s ease;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    #stickyBookNow:hover,
-    #stickyBookNow:focus {
-      box-shadow:
-        0 0 15px var(--pink),
-        0 0 30px var(--blue),
-        0 0 40px var(--pink);
-      outline: none;
-    }
-
-    /* Responsive: top center on small screens */
-    @media (max-width: 640px) {
-      #stickyBookNow {
-        top: 10px;
-        bottom: auto;
-        right: 50%;
-        transform: translateX(50%);
-        padding: 0.8rem 1.8rem;
-        font-size: 1rem;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
+
+<!-- Language Switcher -->
+<div id="langSwitcher" aria-label="Language Switcher">
+  <select aria-live="polite" aria-label="Select Language">
+    <option value="en" selected>English</option>
+    <option value="es">Español</option>
+    <option value="ht">Kreyòl</option>
+  </select>
+</div>
+
+<!-- Dark Mode Toggle -->
+<button id="darkModeToggle" aria-pressed="false" aria-label="Toggle dark mode">Dark Mode</button>
+
+<div class="container" id="content">
+
   <header>
-    <h1>Pure Steam Miami</h1>
-    <p>We Bring Miami’s Heat to Your Car</p>
+    <h1 data-lang-en="Pure Steam Miami" data-lang-es="Pure Steam Miami" data-lang-ht="Pure Steam Miami">Pure Steam Miami</h1>
+    <p data-lang-en="We Bring Miami’s Heat to Your Car" data-lang-es="Llevamos el calor de Miami a tu coche" data-lang-ht="Nou pote chalè Miami nan machin ou">We Bring Miami’s Heat to Your Car</p>
   </header>
 
-  <section class="hero">
-    <p>Steam Over Stains — Anywhere in Miami</p>
-    <a href="booking.html" class="book-now-btn" aria-label="Book Now">Book Now</a>
+  <section class="hero fade-in" id="hero">
+    <p data-lang-en="Steam Over Stains — Anywhere in Miami" data-lang-es="Vapor sobre manchas — en cualquier lugar de Miami" data-lang-ht="Lave ak vapè sou tach — nenpòt kote nan Miami">Steam Over Stains — Anywhere in Miami</p>
+    <button class="book-now-btn" id="heroBookNow" aria-label="Book Now">Book Now</button>
   </section>
 
-  <section class="what-we-clean" aria-label="What We Clean">
-    <h2>What We Clean — <span class="highlight">Steam-Powered & Safe for All Surfaces</span></h2>
-
+  <section class="what-we-clean fade-in" id="whatWeClean" aria-label="What We Clean">
+    <h2 data-lang-en="What We Clean — Steam-Powered & Safe for All Surfaces" data-lang-es="Lo que limpiamos — A vapor y seguro para todas las superficies" data-lang-ht="Sa nou netwaye — Vapè ki pwoteje tout sifas">What We Clean — <span style="color:#00f0ff">Steam-Powered & Safe for All Surfaces</span></h2>
     <div class="service-columns">
       <div class="service-group">
-        <h3>Vehicles</h3>
+        <h3 data-lang-en="Vehicles" data-lang-es="Vehículos" data-lang-ht="Machin">Vehicles</h3>
         <ul>
-          <li>🚗 Cars & Trucks</li>
-          <li>⛵ Boats</li>
-          <li>🏌️‍♂️ Golf Carts</li>
-          <li>🚜 Lawn Mowers</li>
-        </ul>
-      </div>
-
-      <div class="service-group">
-        <h3>Home & Indoor Surfaces</h3>
-        <ul>
-          <li>🪟 Windows</li>
-          <li>🧼 Tile & Grout</li>
-          <li>🛋️ Upholstery & Furniture</li>
-          <li>🛏️ Linen & Clothing</li>
-          <li>🍽️ Tables & Countertops</li>
-        </ul>
-      </div>
-
-      <div class="service-group">
-        <h3>Stubborn Stains & Problems</h3>
-        <ul>
-          <li>🐾 Pet Feces</li>
-          <li>🍬 Gum in Carpet</li>
-          <li>🛠️ Rust on Houses & Sheds</li>
-          <li>🧽 Tough Stains</li>
-        </ul>
-      </div>
-    </div>
-
-    <p class="safe-strong">
-      Our steam cleaning <strong>kills 99.9% of bacteria</strong>, <span class="highlight">is chemical-free</span>, and <strong>safe on all materials</strong> — perfect for your home, vehicle, and everything in between.
-    </p>
-  </section>
-
-  <section class="payments-social" aria-label="Payment Methods and Social Media">
-    <div>
-      Prepay with:
-      <a href="https://cash.app/$puresteammiami" target="_blank" rel="noopener noreferrer">Cash App</a> |
-      <a href="mailto:puresteammiami@gmail.com">PayPal</a> |
-      <a href="https://chime.com" target="_blank" rel="noopener noreferrer">Chime</a>
-    </div>
-    <div class="contact" aria-label="Contact Information">
-      Call/Text: <strong>(786) 297-3068</strong> | Email: <a href="mailto:puresteammiami@gmail.com">puresteammiami@gmail.com</a>
-    </div>
-    <div class="qr-code" aria-label="QR code linking to Pure Steam Miami website" style="margin-top: 1.5rem;">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2F72x72.github.io%2FPure-Steam-305%2F&size=150x150" alt="QR code linking to Pure Steam Miami website" />
-    </div>
-  </section>
-
-  <footer>
-    © 2025 Pure Steam Miami. All rights reserved.
-  </footer>
-
-  <!-- Sticky Book Now button -->
-  <a href="booking.html" id="stickyBookNow" aria-label="Book Now">Book Now</a>
-</body>
-</html>
+          <li data-icon="🚗" data-lang-en="Cars & Trucks" data-lang-es="Coches y Camiones" data-lang-ht="Machin ak kamyon">Cars & Trucks</
