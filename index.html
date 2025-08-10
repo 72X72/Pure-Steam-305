@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+to<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -85,5 +85,16 @@
   <footer>
     <p>© 2025 Pure Steam Miami. All rights reserved.</p>
   </footer>
+
+  <script>
+    window.onerror = function(msg, url, lineNo, columnNo, error) {
+      alert(
+        'Error: ' + msg + '\n' +
+        'Script: ' + url + '\n' +
+        'Line: ' + lineNo + ', Column: ' + columnNo
+      );
+      return false;
+    };
+  </script>
 </body>
 </html>
