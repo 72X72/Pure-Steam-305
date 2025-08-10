@@ -21,14 +21,12 @@
     transition: background 0.5s, color 0.5s;
   }
 
-  /* Container */
   .container {
     max-width: 960px;
     margin: 0 auto;
     padding: 2rem 1rem 4rem;
   }
 
-  /* Header */
   header {
     text-align: center;
     margin-bottom: 3rem;
@@ -47,7 +45,6 @@
     text-shadow: 0 0 12px #00f0ff;
   }
 
-  /* Hero */
   .hero {
     text-align: center;
     margin-bottom: 3rem;
@@ -78,7 +75,6 @@
     outline: none;
     animation: pulseGlow 2s infinite alternate;
   }
-
   @keyframes pulseGlow {
     from { box-shadow: 0 0 40px #ff3ecf, 0 0 60px #00f0ff; }
     to { box-shadow: 0 0 70px #ff3ecf, 0 0 90px #00f0ff; }
@@ -108,60 +104,70 @@
     outline: none;
   }
 
-  /* What We Clean Section */
-  .what-we-clean {
+  /* Accordion styles */
+  .accordion {
     background: rgba(255 255 255 / 0.1);
-    border-radius: 25px;
-    box-shadow: 0 0 25px rgba(255, 62, 207, 0.6), 0 0 35px rgba(0, 240, 255, 0.6);
-    padding: 2rem;
-    margin-bottom: 3rem;
-  }
-  .what-we-clean h2 {
-    font-size: 2.6rem;
-    font-weight: 900;
-    color: #ff3ecf;
-    text-shadow: 0 0 20px #ff3ecf;
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  .service-columns {
-    display: flex;
-    gap: 2rem;
-    justify-content: space-between;
-  }
-  .service-group {
-    flex: 1;
-    background: rgba(255 255 255 / 0.1);
-    padding: 1.75rem 1.5rem;
     border-radius: 20px;
-    box-shadow: 0 0 15px rgba(255, 62, 207, 0.5), 0 0 25px rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 25px rgba(255, 62, 207, 0.6), 0 0 35px rgba(0, 240, 255, 0.6);
+    margin-bottom: 1rem;
   }
-  .service-group h3 {
-    color: #ff3ecf;
+  .accordion-header {
+    cursor: pointer;
+    padding: 1.5rem 2rem;
     font-weight: 900;
     font-size: 1.6rem;
-    margin-bottom: 1.25rem;
-    text-shadow: 0 0 10px #ff3ecf;
-    text-align: center;
+    color: #ff3ecf;
+    text-shadow: 0 0 15px #ff3ecf;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  .service-group ul {
+  .accordion-header:hover,
+  .accordion-header:focus {
+    color: #00f0ff;
+    outline: none;
+    text-shadow: 0 0 20px #00f0ff;
+  }
+  .accordion-header:after {
+    content: '▼';
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    color: #ff3ecf;
+  }
+  .accordion-header.active:after {
+    transform: rotate(180deg);
+    color: #00f0ff;
+  }
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    padding: 0 2rem;
+    background: rgba(255 255 255 / 0.05);
+    border-top: 1px solid rgba(255, 62, 207, 0.4);
+  }
+  .accordion-content.open {
+    padding: 1rem 2rem 2rem;
+  }
+  .accordion-content ul {
     list-style: none;
     padding-left: 0;
     color: #eee;
     font-weight: 700;
     font-size: 1.15rem;
+    line-height: 1.6;
   }
-  .service-group ul li {
-    margin-bottom: 14px;
+  .accordion-content ul li {
+    margin-bottom: 0.75rem;
     position: relative;
     padding-left: 30px;
   }
-  /* Using emoji for icons */
-  .service-group ul li::before {
+  /* Emoji icons with ::before */
+  .accordion-content ul li::before {
     content: attr(data-icon);
     position: absolute;
     left: 0;
-    top: 0;
     font-size: 1.3rem;
   }
 
@@ -219,239 +225,152 @@
     font-size: 0.9rem;
   }
 
-  /* Scroll-triggered fade-in animation */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-  }
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Counters */
-  .counters {
-    display: flex;
-    justify-content: space-around;
-    margin: 3rem 0;
-    gap: 2rem;
-  }
-  .counter {
-    background: rgba(255 255 255 / 0.1);
-    padding: 1.5rem 2rem;
-    border-radius: 20px;
-    box-shadow: 0 0 20px rgba(255, 62, 207, 0.6), 0 0 25px rgba(0, 240, 255, 0.6);
-    text-align: center;
-    flex: 1;
-  }
-  .counter h3 {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: #ff3ecf;
-    text-shadow: 0 0 15px #ff3ecf;
-    margin: 0 0 0.5rem;
-  }
-  .counter p {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #eee;
-  }
-
-  /* Language switcher */
-  #langSwitcher {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: rgba(0,0,0,0.6);
-    border-radius: 12px;
-    box-shadow: 0 0 20px #ff3ecf;
-    padding: 0.5rem 1rem;
-    font-weight: 700;
-    color: #eee;
-    cursor: pointer;
-    user-select: none;
-    z-index: 10000;
-  }
-  #langSwitcher select {
-    background: transparent;
-    border: none;
-    color: #eee;
-    font-weight: 700;
-    font-size: 1rem;
-    outline: none;
-    cursor: pointer;
-  }
-
-  /* Lightbox Styles */
-  #lightboxOverlay {
-    position: fixed;
-    top:0; left:0; right:0; bottom:0;
-    background: rgba(0,0,0,0.85);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 100000;
-  }
-  #lightboxOverlay.active {
-    display: flex;
-  }
-  #lightboxOverlay img {
-    max-width: 90vw;
-    max-height: 90vh;
-    border-radius: 15px;
-    box-shadow: 0 0 30px #ff3ecf, 0 0 40px #00f0ff;
-  }
-  #lightboxOverlay .closeBtn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: #ff3ecf;
-    font-size: 2.5rem;
-    font-weight: 900;
-    cursor: pointer;
-    text-shadow: 0 0 15px #ff3ecf;
-    user-select: none;
-  }
-
-  /* Gallery */
-  .gallery {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .gallery img {
-    width: 120px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 12px;
-    cursor: pointer;
-    box-shadow: 0 0 10px #00f0ff;
-    transition: box-shadow 0.3s ease;
-  }
-  .gallery img:hover,
-  .gallery img:focus {
-    box-shadow: 0 0 20px #ff3ecf;
-    outline: none;
-  }
-
-  /* Dark mode toggle */
-  #darkModeToggle {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background: rgba(0,0,0,0.6);
-    border-radius: 12px;
-    padding: 0.5rem 1rem;
-    color: #eee;
-    font-weight: 700;
-    cursor: pointer;
-    user-select: none;
-    z-index: 10000;
-  }
-
-  /* Dark mode styles */
-  body.dark-mode {
-    background: #0a0014;
-    color: #bbb;
-  }
-  body.dark-mode header h1 {
-    color: #ff6de0;
-    text-shadow: 0 0 30px #ff6de0;
-  }
-  body.dark-mode header p {
-    color: #36eaff;
-    text-shadow: 0 0 15px #36eaff;
-  }
-  body.dark-mode .book-now-btn,
-  body.dark-mode #stickyBookNow {
-    background: linear-gradient(90deg, #ff6de0, #36eaff);
-    box-shadow: 0 0 35px #ff6de0, 0 0 50px #36eaff;
-  }
-  body.dark-mode .book-now-btn:hover,
-  body.dark-mode #stickyBookNow:hover {
-    box-shadow: 0 0 60px #ff6de0, 0 0 80px #36eaff;
-  }
-  body.dark-mode .what-we-clean,
-  body.dark-mode .payments-social,
-  body.dark-mode .counter {
-    background: rgba(255 255 255 / 0.05);
-    box-shadow: 0 0 25px rgba(255, 105, 255, 0.5), 0 0 35px rgba(0, 210, 255, 0.5);
-  }
-  body.dark-mode .service-group {
-    background: rgba(255 255 255 / 0.05);
-    box-shadow: 0 0 15px rgba(255, 105, 255, 0.4), 0 0 25px rgba(0, 210, 255, 0.4);
-  }
-  body.dark-mode .payments-social a {
-    color: #36eaff;
-    text-shadow: 0 0 20px #36eaff;
-  }
-  body.dark-mode .payments-social a:hover,
-  body.dark-mode .payments-social a:focus {
-    color: #ff6de0;
-    text-shadow: 0 0 30px #ff6de0;
-  }
-
   /* Responsive */
-  @media (max-width: 900px) {
-    .service-columns {
-      flex-direction: column;
-    }
-    .counters {
-      flex-direction: column;
-    }
-  }
-  @media (max-width: 480px) {
-    header h1 {
-      font-size: 2.2rem;
-    }
-    header p {
-      font-size: 1.2rem;
-    }
-    .what-we-clean h2 {
-      font-size: 2rem;
-    }
-    .service-group h3 {
+  @media (max-width: 700px) {
+    .accordion-header {
       font-size: 1.3rem;
     }
-    .gallery img {
-      width: 90px;
-      height: 60px;
+    .accordion-content ul li {
+      font-size: 1rem;
     }
   }
 </style>
 </head>
 <body>
-
-<!-- Language Switcher -->
-<div id="langSwitcher" aria-label="Language Switcher">
-  <select aria-live="polite" aria-label="Select Language">
-    <option value="en" selected>English</option>
-    <option value="es">Español</option>
-    <option value="ht">Kreyòl</option>
-  </select>
-</div>
-
-<!-- Dark Mode Toggle -->
-<button id="darkModeToggle" aria-pressed="false" aria-label="Toggle dark mode">Dark Mode</button>
-
-<div class="container" id="content">
+<div class="container">
 
   <header>
-    <h1 data-lang-en="Pure Steam Miami" data-lang-es="Pure Steam Miami" data-lang-ht="Pure Steam Miami">Pure Steam Miami</h1>
-    <p data-lang-en="We Bring Miami’s Heat to Your Car" data-lang-es="Llevamos el calor de Miami a tu coche" data-lang-ht="Nou pote chalè Miami nan machin ou">We Bring Miami’s Heat to Your Car</p>
+    <h1>Pure Steam Miami</h1>
+    <p>We Bring Miami’s Heat to Your Car</p>
   </header>
 
-  <section class="hero fade-in" id="hero">
-    <p data-lang-en="Steam Over Stains — Anywhere in Miami" data-lang-es="Vapor sobre manchas — en cualquier lugar de Miami" data-lang-ht="Lave ak vapè sou tach — nenpòt kote nan Miami">Steam Over Stains — Anywhere in Miami</p>
-    <button class="book-now-btn" id="heroBookNow" aria-label="Book Now">Book Now</button>
+  <section class="hero">
+    <p>Steam Over Stains — Anywhere in Miami</p>
+    <button class="book-now-btn" aria-label="Book Now" onclick="location.href='booking.html'">Book Now</button>
   </section>
 
-  <section class="what-we-clean fade-in" id="whatWeClean" aria-label="What We Clean">
-    <h2 data-lang-en="What We Clean — Steam-Powered & Safe for All Surfaces" data-lang-es="Lo que limpiamos — A vapor y seguro para todas las superficies" data-lang-ht="Sa nou netwaye — Vapè ki pwoteje tout sifas">What We Clean — <span style="color:#00f0ff">Steam-Powered & Safe for All Surfaces</span></h2>
-    <div class="service-columns">
-      <div class="service-group">
-        <h3 data-lang-en="Vehicles" data-lang-es="Vehículos" data-lang-ht="Machin">Vehicles</h3>
+  <section aria-label="What We Clean">
+
+    <h2 style="text-align:center; color:#ff3ecf; font-weight:900; text-shadow: 0 0 20px #ff3ecf; margin:3rem 0 2rem;">
+      What We Clean — <span style="color:#00f0ff;">Steam-Powered & Safe for All Surfaces</span>
+    </h2>
+
+    <!-- Accordion Vehicle -->
+    <div class="accordion">
+      <button class="accordion-header" aria-expanded="false" aria-controls="vehiclesPanel" id="vehiclesBtn">
+        Vehicles
+      </button>
+      <div class="accordion-content" id="vehiclesPanel" role="region" aria-labelledby="vehiclesBtn">
         <ul>
-          <li data-icon="🚗" data-lang-en="Cars & Trucks" data-lang-es="Coches y Camiones" data-lang-ht="Machin ak kamyon">Cars & Trucks</
+          <li data-icon="🚗">Cars & Trucks</li>
+          <li data-icon="⛵">Boats</li>
+          <li data-icon="🏌️‍♂️">Golf Carts</li>
+          <li data-icon="🚜">Lawn Mowers</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Accordion Home -->
+    <div class="accordion">
+      <button class="accordion-header" aria-expanded="false" aria-controls="homePanel" id="homeBtn">
+        Home & Indoor Surfaces
+      </button>
+      <div class="accordion-content" id="homePanel" role="region" aria-labelledby="homeBtn">
+        <ul>
+          <li data-icon="🪟">Windows</li>
+          <li data-icon="🧼">Tile & Grout</li>
+          <li data-icon="🛋️">Upholstery & Furniture</li>
+          <li data-icon="🛏️">Linen & Clothing</li>
+          <li data-icon="🍽️">Tables & Countertops</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Accordion Stains -->
+    <div class="accordion">
+      <button class="accordion-header" aria-expanded="false" aria-controls="stainsPanel" id="stainsBtn">
+        Stubborn Stains & Problems
+      </button>
+      <div class="accordion-content" id="stainsPanel" role="region" aria-labelledby="stainsBtn">
+        <ul>
+          <li data-icon="🐾">Pet Feces</li>
+          <li data-icon="🍬">Gum in Carpet</li>
+          <li data-icon="🛠️">Rust on Houses & Sheds</li>
+          <li data-icon="🧽">Tough Stains</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Accordion Other -->
+    <div class="accordion">
+      <button class="accordion-header" aria-expanded="false" aria-controls="otherPanel" id="otherBtn">
+        Other Services
+      </button>
+      <div class="accordion-content" id="otherPanel" role="region" aria-labelledby="otherBtn">
+        <ul>
+          <li data-icon="🧊">Glass Cleaning</li>
+          <li data-icon="🏭">Industrial Kitchens</li>
+          <li data-icon="🏠">In-home Cleaning (Bathrooms, etc.)</li>
+          <li data-icon="🚤">Boat Restoration</li>
+          <li data-icon="❄️">Air Conditioner Cleaning</li>
+          <li data-icon="🪨">Granite Surface Cleaning</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="safe-strong">
+      Our steam cleaning <strong>kills 99.9% of bacteria</strong>, <span style="color:#00f0ff; font-weight: 900;">is chemical-free</span>, and <strong>safe on all materials</strong> — perfect for your home, vehicle, and everything in between.
+    </p>
+  </section>
+
+  <section class="payments-social" aria-label="Payment Methods and Social Media">
+    <div>
+      Prepay with:
+      <a href="https://cash.app/$puresteammiami" target="_blank" rel="noopener noreferrer">Cash App</a> |
+      <a href="mailto:puresteammiami@gmail.com">PayPal</a> |
+      <a href="https://chime.com" target="_blank" rel="noopener noreferrer">Chime</a>
+    </div>
+    <div class="contact" aria-label="Contact Information" style="margin-top:1rem;">
+      Call/Text: <strong>(786) 297-3068</strong> | Email: <a href="mailto:puresteammiami@gmail.com">puresteammiami@gmail.com</a>
+    </div>
+    <div class="qr-code" aria-label="QR code linking to Pure Steam Miami website" style="margin-top: 1.5rem;">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2F72x72.github.io%2FPure-Steam-305%2F&size=150x150" alt="QR code linking to Pure Steam Miami website" />
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Pure Steam Miami. All rights reserved.
+  </footer>
+
+</div>
+
+<script>
+  // Accordion toggle function
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const expanded = header.getAttribute('aria-expanded') === 'true';
+      header.setAttribute('aria-expanded', !expanded);
+      header.classList.toggle('active');
+      const content = document.getElementById(header.getAttribute('aria-controls'));
+      if (!expanded) {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        content.classList.add('open');
+      } else {
+        content.style.maxHeight = null;
+        content.classList.remove('open');
+      }
+    });
+  });
+
+  // Expand first accordion by default (optional)
+  // Uncomment if you want to auto-expand first section on load
+  /*
+  window.addEventListener('DOMContentLoaded', () => {
+    const firstHeader = document.querySelector('.accordion-header');
+    if (firstHeader) firstHeader.click();
+  });
+  */
+</script>
+
+</body>
+</html>
