@@ -82,19 +82,25 @@ to<!DOCTYPE html>
     </div>
   </section>
 
-  <footer>
-    <p>© 2025 Pure Steam Miami. All rights reserved.</p>
-  </footer>
+  <script>
+    // This will cause an error to test the window.onerror alert
+    nonExistentFunction();
+  </script>
 
   <script>
-    window.onerror = function(msg, url, lineNo, columnNo, error) {
-      alert(
-        'Error: ' + msg + '\n' +
-        'Script: ' + url + '\n' +
-        'Line: ' + lineNo + ', Column: ' + columnNo
-      );
-      return false;
-    };
-  </script>
+  window.onerror = function(msg, url, lineNo, columnNo, error) {
+    alert(
+      'Error: ' + msg + '\n' +
+      'Script: ' + url + '\n' +
+      'Line: ' + lineNo + ', Column: ' + columnNo
+    );
+    return false;
+  };
+</script>
+
+<script>
+  // This will cause an error to test the window.onerror alert
+  nonExistentFunction();
+</script>
 </body>
 </html>
