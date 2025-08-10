@@ -6,7 +6,6 @@
   <title>Book Now - Puresteam Miami Mobile Detailing</title>
   <link rel="stylesheet" href="booking-style.css" />
   <style>
-    /* Additional styles just for booking page */
     body {
       background: linear-gradient(135deg, #ff3ecf, #00f0ff);
       color: #fff;
@@ -22,7 +21,6 @@
       max-width: 900px;
       text-align: center;
       margin-bottom: 2rem;
-      position: relative;
     }
     header h1 {
       font-size: 2.8rem;
@@ -35,16 +33,6 @@
       font-size: 1.25rem;
       font-style: italic;
       text-shadow: 0 0 8px #ff3ecf;
-    }
-    .skyline {
-      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') center/cover no-repeat;
-      height: 220px;
-      width: 100%;
-      max-width: 900px;
-      border-radius: 15px;
-      box-shadow: 0 0 30px #ff3ecf, 0 0 40px #00f0ff;
-      margin-bottom: 2rem;
-      position: relative;
     }
     form {
       background: rgba(255 255 255 / 0.1);
@@ -129,16 +117,12 @@
       text-shadow: 0 0 10px #00ffea;
       display: none;
     }
-    /* Responsive */
     @media (max-width: 600px) {
       header h1 {
         font-size: 2rem;
       }
       header p {
         font-size: 1rem;
-      }
-      .skyline {
-        height: 160px;
       }
     }
   </style>
@@ -148,8 +132,6 @@
     <h1>Book Your 305 Heat Clean Today</h1>
     <p>Steam Over Stains — Anywhere in Miami</p>
   </header>
-
-  <div class="skyline" aria-hidden="true"></div>
 
   <form id="bookingForm" action="https://formspree.io/f/xlezvkjq" method="POST">
     <label for="service">Select Service</label>
@@ -198,12 +180,12 @@
   </form>
 
   <script>
-    // Set minimum date for date picker to today
+    // Set minimum date to today
     const dateInput = document.getElementById('date');
     const today = new Date().toISOString().split('T')[0];
     dateInput.setAttribute('min', today);
 
-    // Handle form submission success message
+    // Handle form submission with fetch and show success message
     const form = document.getElementById('bookingForm');
     const successMessage = document.getElementById('successMessage');
 
