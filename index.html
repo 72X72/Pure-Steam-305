@@ -4,124 +4,206 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Pure Steam Miami</title>
-<link rel="stylesheet" href="booking-style.css" />
+
+<!-- Font Awesome for icons -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  integrity="sha512-pV8xMF3RgciSckIHChLvJ2QaHvEBoVf2ZkLRGTfWehC3U59p1lNz5Ef1aBzR3PjkBN7cHK92DXiUZF+Q4jsEgA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+
 <style>
-  body {
-    background: linear-gradient(135deg, #ff3ecf, #00f0ff);
-    color: white;
-    min-height: 100vh;
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
   }
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
+    color: #222;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  a {
+    text-decoration: none;
+    color: #0077b6;
+    font-weight: 700;
+  }
+  a:hover, a:focus {
+    color: #e60039;
+  }
+
+  /* Header */
   header {
-    max-width: 900px;
-    margin: 2rem auto 1rem;
-    text-align: center;
+    background: #fff;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   header h1 {
-    font-size: 3rem;
     font-weight: 900;
-    text-shadow: 0 0 10px #ff3ecf, 0 0 20px #00f0ff;
-    margin-bottom: 0.25rem;
+    color: #e60039; /* Miami Heat red */
+    margin: 0;
+    font-size: 2rem;
   }
   header p {
+    margin: 0.25rem 0 0.75rem;
+    font-weight: 700;
+    color: #0077b6;
     font-style: italic;
-    font-size: 1.4rem;
-    text-shadow: 0 0 8px #ff3ecf;
   }
+
+  /* Main */
   main {
+    flex: 1;
     max-width: 900px;
-    margin: 0 auto 3rem;
+    margin: 2rem auto;
     padding: 0 1rem;
+  }
+
+  /* Hero */
+  .hero {
     text-align: center;
+    margin-bottom: 3rem;
   }
   .hero h2 {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     font-weight: 900;
+    color: #e60039;
     margin-bottom: 0.5rem;
-    text-shadow: 0 0 10px #00f0ff;
   }
   .hero p {
-    font-style: italic;
     font-size: 1.25rem;
+    font-style: italic;
+    color: #ff4081;
     margin-bottom: 1.5rem;
-    text-shadow: 0 0 8px #ff3ecf;
   }
-  .book-now-btn {
+  .hero a.book-now-btn {
     background: linear-gradient(90deg, #ff3ecf, #00f0ff);
     padding: 1rem 3rem;
     border-radius: 30px;
     color: white;
     font-weight: 900;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     box-shadow: 0 0 20px #ff3ecf, 0 0 30px #00f0ff;
     text-transform: uppercase;
-    text-decoration: none;
-    display: inline-block;
     transition: box-shadow 0.3s ease;
   }
-  .book-now-btn:hover,
-  .book-now-btn:focus {
+  .hero a.book-now-btn:hover,
+  .hero a.book-now-btn:focus {
     box-shadow: 0 0 30px #ff3ecf, 0 0 50px #00f0ff;
     outline: none;
   }
-  .links-section {
-    margin-top: 3rem;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+
+  /* What We Clean Section */
+  section.what-we-clean {
+    margin-bottom: 3rem;
+    text-align: center;
   }
-  .links-section h3 {
+  section.what-we-clean h3 {
+    color: #e60039;
     font-weight: 900;
-    margin-bottom: 1rem;
-    text-shadow: 0 0 10px #ff3ecf;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
   }
-  .links-list {
+  section.what-we-clean ul {
     list-style: none;
-    padding: 0;
-    margin: 0 auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
-    flex-wrap: wrap;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 900px;
   }
-  .links-list li a {
-    color: white;
-    font-weight: 700;
-    text-decoration: none;
-    font-size: 1.1rem;
-    border: 2px solid white;
-    padding: 0.5rem 1rem;
-    border-radius: 12px;
-    transition: background-color 0.3s, color 0.3s;
-    display: inline-block;
-  }
-  .links-list li a:hover,
-  .links-list li a:focus {
-    background-color: #ff3ecf;
-    color: #000;
-    border-color: #ff3ecf;
-    outline: none;
-  }
-  footer {
-    background: #000;
-    color: #fff;
-    padding: 1rem 1.5rem;
+  section.what-we-clean li {
+    flex: 1 1 140px;
     text-align: center;
-    font-size: 0.9rem;
   }
-  footer .contact-info {
-    font-weight: 700;
+  section.what-we-clean li i {
+    font-size: 3rem;
+    color: #ff3ecf;
+    transition: color 0.3s;
+  }
+  section.what-we-clean li:nth-child(even) i {
     color: #00f0ff;
   }
+  section.what-we-clean li p {
+    margin-top: 0.5rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  section.what-we-clean li:hover i {
+    color: #e60039;
+  }
+
+  /* Payment & Social Section */
+  section.payment-social {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  section.payment-social h3 {
+    font-weight: 900;
+    color: #e60039;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+  }
+  .payments, .socials {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-weight: 700;
+  }
+  .payments a, .socials a {
+    color: #0077b6;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+  }
+  .payments a:hover, .socials a:hover {
+    color: #e60039;
+  }
+  /* Contact info */
+  footer {
+    background: #fff;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    font-size: 1rem;
+    color: #666;
+    box-shadow: 0 -3px 8px rgba(0,0,0,0.1);
+  }
+  footer .contact-info {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: #e60039;
+  }
   footer .qr-code img {
-    margin-top: 0.75rem;
     width: 140px;
     height: 140px;
     border-radius: 15px;
-    border: 4px solid #ff3ecf;
-    box-shadow: 0 6px 12px rgba(255, 62, 207, 0.5);
+    border: 4px solid #0077b6;
+    box-shadow: 0 6px 12px rgba(0, 119, 182, 0.5);
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    section.what-we-clean ul {
+      flex-direction: column;
+      align-items: center;
+    }
+    section.what-we-clean li {
+      flex: none;
+      margin-bottom: 1.5rem;
+    }
   }
 </style>
 </head>
@@ -139,16 +221,32 @@
     <a href="booking.html" class="book-now-btn" aria-label="Book Now">Book Now</a>
   </section>
 
-  <section class="links-section" aria-label="Payment and Social Media Links">
-    <h3>Payment Methods & Social Media</h3>
-    <ul class="links-list">
-      <li><a href="https://cash.app/$puresteammiami" target="_blank" rel="noopener noreferrer" aria-label="Cash App">Cash App</a></li>
-      <li><a href="https://www.paypal.me/puresteammiami" target="_blank" rel="noopener noreferrer" aria-label="PayPal">PayPal</a></li>
-      <li><a href="https://chime.com" target="_blank" rel="noopener noreferrer" aria-label="Chime Bank">Chime</a></li>
-      <li><a href="https://www.facebook.com/PureSteamMiam" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a></li>
-      <li><a href="https://www.instagram.com/frank_b_white" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a></li>
-      <li><a href="https://www.tiktok.com/@frankbwhite" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TikTok</a></li>
+  <section class="what-we-clean" aria-label="What We Clean">
+    <h3>What We Clean</h3>
+    <ul>
+      <li><i class="fas fa-car"></i><p>Cars</p></li>
+      <li><i class="fas fa-truck"></i><p>Trucks</p></li>
+      <li><i class="fas fa-ship"></i><p>Boats</p></li>
+      <li><i class="fas fa-kitchen-set"></i><p>Industrial Kitchens</p></li>
+      <li><i class="fas fa-snowflake"></i><p>Air Conditioners</p></li>
+      <li><i class="fas fa-gem"></i><p>Granite Surfaces</p></li>
+      <li><i class="fas fa-home"></i><p>In-Home Cleaning</p></li>
+      <li><i class="fas fa-tools"></i><p>Car Restoration</p></li>
     </ul>
+  </section>
+
+  <section class="payment-social" aria-label="Payment Methods and Social Media">
+    <h3>Payment Methods & Social Media</h3>
+    <div class="payments">
+      <a href="https://cash.app/$puresteammiami" target="_blank" rel="noopener noreferrer">Cash App</a>
+      <a href="mailto:puresteammiami@gmail.com">PayPal</a>
+      <a href="https://chime.com" target="_blank" rel="noopener noreferrer">Chime</a>
+    </div>
+    <div class="socials" style="margin-top: 1rem;">
+      <a href="https://facebook.com/PureSteamMiam" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://instagram.com/frank_b_white" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://tiktok.com/@frankbwhite" target="_blank" rel="noopener noreferrer">TikTok</a>
+    </div>
   </section>
 </main>
 
@@ -158,7 +256,10 @@
     <p>Email: puresteammiami@gmail.com</p>
   </div>
   <div class="qr-code" aria-label="QR code linking to Pure Steam Miami website">
-    <img src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2F72x72.github.io%2FPure-Steam-305%2F&size=150x150" alt="QR code linking to Pure Steam Miami website" />
+    <img
+      src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2F72x72.github.io%2FPure-Steam-305%2F&size=150x150"
+      alt="QR code linking to Pure Steam Miami website"
+    />
   </div>
 </footer>
 
