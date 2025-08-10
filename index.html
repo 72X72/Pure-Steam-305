@@ -26,10 +26,13 @@
       text-decoration: none;
       color: #00f0ff;
       font-weight: 700;
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
     }
     a:hover, a:focus {
       color: #ff3ecf;
+      text-shadow:
+        0 0 5px #ff3ecf,
+        0 0 15px #00f0ff;
       outline: none;
     }
 
@@ -201,25 +204,53 @@
       margin-top: 2rem;
     }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .service-columns {
-        flex-direction: column;
-        gap: 2rem;
-      }
+    /* Miami Vice neon colors */
+    :root {
+      --pink: #ff3ecf;
+      --blue: #00f0ff;
     }
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
-      header p {
-        font-size: 1.2rem;
-      }
-      .what-we-clean h2 {
-        font-size: 2rem;
-      }
-      .service-group h3 {
-        font-size: 1.3rem;
+
+    /* Sticky Book Now Button */
+    #stickyBookNow {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(90deg, var(--pink), var(--blue));
+      color: white;
+      font-weight: 900;
+      padding: 1rem 2.5rem;
+      border-radius: 30px;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+      box-shadow:
+        0 0 8px var(--pink),
+        0 0 15px var(--blue);
+      cursor: pointer;
+      z-index: 9999;
+      transition: box-shadow 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #stickyBookNow:hover,
+    #stickyBookNow:focus {
+      box-shadow:
+        0 0 15px var(--pink),
+        0 0 30px var(--blue),
+        0 0 40px var(--pink);
+      outline: none;
+    }
+
+    /* Responsive: top center on small screens */
+    @media (max-width: 640px) {
+      #stickyBookNow {
+        top: 10px;
+        bottom: auto;
+        right: 50%;
+        transform: translateX(50%);
+        padding: 0.8rem 1.8rem;
+        font-size: 1rem;
       }
     }
   </style>
@@ -294,5 +325,8 @@
   <footer>
     © 2025 Pure Steam Miami. All rights reserved.
   </footer>
+
+  <!-- Sticky Book Now button -->
+  <a href="booking.html" id="stickyBookNow" aria-label="Book Now">Book Now</a>
 </body>
 </html>
