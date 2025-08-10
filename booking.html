@@ -1,237 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Book Now - Pure Steam Miami</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pure Steam Miami</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;900&display=swap');
 
-<style>
-  body {
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    color: #eee;
-    font-family: 'Montserrat', sans-serif;
-    min-height: 100vh;
-    margin: 0; padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  header {
-    max-width: 900px;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #ff3ecf;
-    text-shadow: 0 0 15px #ff3ecf;
-  }
-  header h1 {
-    font-weight: 900;
-    font-size: 2.8rem;
-    margin: 0;
-  }
-  header p {
-    font-style: italic;
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #00f0ff;
-    text-shadow: 0 0 10px #00f0ff;
-    margin-top: 0.25rem;
-  }
-  form {
-    background: rgba(255 255 255 / 0.1);
-    max-width: 900px;
-    width: 100%;
-    padding: 30px 35px;
-    border-radius: 20px;
-    box-shadow:
-      0 0 20px #ff3ecf,
-      0 0 40px #00f0ff;
-    backdrop-filter: blur(8px);
-  }
-  label {
-    display: block;
-    font-weight: 700;
-    margin-bottom: 6px;
-    text-shadow: 0 0 4px #000;
-  }
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  select,
-  textarea,
-  input[type="date"],
-  input[type="time"] {
-    width: 100%;
-    padding: 12px 14px;
-    margin-bottom: 18px;
-    border-radius: 12px;
-    border: none;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #222;
-  }
-  textarea {
-    resize: vertical;
-    min-height: 80px;
-  }
-  button {
-    background: linear-gradient(90deg, #ff3ecf, #00f0ff);
-    border: none;
-    padding: 16px 0;
-    width: 100%;
-    font-size: 1.4rem;
-    font-weight: 900;
-    color: #fff;
-    border-radius: 20px;
-    cursor: pointer;
-    text-transform: uppercase;
-    box-shadow:
-      0 0 25px #ff3ecf,
-      0 0 50px #00f0ff;
-    transition: box-shadow 0.3s ease;
-  }
-  button:hover,
-  button:focus {
-    box-shadow:
-      0 0 40px #ff3ecf,
-      0 0 70px #00f0ff;
-    outline: none;
-  }
-  .payment-info {
-    background: rgba(255 255 255 / 0.15);
-    padding: 20px 25px;
-    border-radius: 20px;
-    margin: 25px 0;
-    text-align: center;
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: #eee;
-    box-shadow:
-      0 0 20px #ff3ecf,
-      0 0 30px #00f0ff;
-  }
-  .payment-info a {
-    color: #00f0ff;
-    text-decoration: underline;
-    font-weight: 900;
-    margin: 0 12px;
-    transition: color 0.3s, text-shadow 0.3s;
-  }
-  .payment-info a:hover {
-    color: #ff3ecf;
-    text-shadow:
-      0 0 10px #ff3ecf,
-      0 0 15px #00f0ff;
-  }
-  .success-message {
-    text-align: center;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #00ffea;
-    margin-top: 20px;
-    text-shadow: 0 0 12px #00ffea;
-    display: none;
-  }
-  @media (max-width: 600px) {
+    /* Base & Reset */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
+      font-family: 'Montserrat', sans-serif;
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 4rem;
+    }
+    a {
+      text-decoration: none;
+      color: #00f0ff;
+      font-weight: 700;
+      transition: color 0.3s ease;
+    }
+    a:hover, a:focus {
+      color: #ff3ecf;
+      outline: none;
+    }
+
+    header {
+      max-width: 900px;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
     header h1 {
-      font-size: 2rem;
+      font-size: 3rem;
+      font-weight: 900;
+      color: #ff3ecf;
+      text-shadow: 0 0 15px #ff3ecf;
+      margin-bottom: 0.25rem;
     }
     header p {
-      font-size: 1rem;
+      font-size: 1.5rem;
+      font-style: italic;
+      color: #00f0ff;
+      text-shadow: 0 0 10px #00f0ff;
     }
-  }
-</style>
+
+    .hero {
+      max-width: 900px;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .hero p {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #222;
+      text-shadow: 0 0 8px #ff3ecf;
+    }
+    .book-now-btn {
+      background: linear-gradient(90deg, #ff3ecf, #00f0ff);
+      color: white;
+      font-weight: 900;
+      font-size: 1.3rem;
+      padding: 1rem 4rem;
+      border-radius: 30px;
+      box-shadow: 0 0 25px #ff3ecf, 0 0 35px #00f0ff;
+      transition: box-shadow 0.3s ease;
+      display: inline-block;
+      text-transform: uppercase;
+    }
+    .book-now-btn:hover, .book-now-btn:focus {
+      box-shadow: 0 0 40px #ff3ecf, 0 0 60px #00f0ff;
+      outline: none;
+    }
+
+    /* What We Clean Section */
+    .what-we-clean {
+      max-width: 900px;
+      width: 100%;
+      margin: 4rem auto 5rem;
+      padding: 2rem;
+      background: rgba(255 255 255 / 0.15);
+      border-radius: 25px;
+      box-shadow: 0 0 25px rgba(255, 62, 207, 0.6), 0 0 35px rgba(0, 240, 255, 0.6);
+      color: #eee;
+      font-weight: 600;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    .what-we-clean h2 {
+      font-size: 2.6rem;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      color: #ff3ecf;
+      text-shadow: 0 0 20px #ff3ecf;
+    }
+    .what-we-clean .highlight {
+      color: #00f0ff;
+      text-shadow: 0 0 15px #00f0ff;
+    }
+    .service-columns {
+      display: flex;
+      justify-content: space-between;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .service-group {
+      flex: 1;
+      padding: 1.75rem 1.5rem;
+      background: rgba(255 255 255 / 0.1);
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255, 62, 207, 0.5), 0 0 25px rgba(0, 240, 255, 0.5);
+    }
+    .service-group h3 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      color: #ff3ecf;
+      text-shadow: 0 0 10px #ff3ecf;
+      text-align: center;
+    }
+    .service-group ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .service-group ul li {
+      margin-bottom: 14px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      padding-left: 30px;
+      position: relative;
+      color: #eee;
+    }
+    /* Using emoji icons, so no custom ::before needed */
+
+    .safe-strong {
+      text-align: center;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #00f0ff;
+      text-shadow: 0 0 15px #00f0ff;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Payment & Social Section */
+    .payments-social {
+      max-width: 900px;
+      width: 100%;
+      background: rgba(255 255 255 / 0.15);
+      border-radius: 25px;
+      padding: 2rem;
+      box-shadow: 0 0 20px rgba(255, 62, 207, 0.5), 0 0 30px rgba(0, 240, 255, 0.5);
+      margin-bottom: 3rem;
+      text-align: center;
+      color: #eee;
+      font-weight: 700;
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+    .payments-social a {
+      margin: 0 1rem;
+      display: inline-block;
+      color: #00f0ff;
+      font-weight: 900;
+      font-size: 1.1rem;
+      text-shadow: 0 0 10px #00f0ff;
+      transition: color 0.3s ease;
+    }
+    .payments-social a:hover,
+    .payments-social a:focus {
+      color: #ff3ecf;
+      outline: none;
+    }
+    .payments-social .contact {
+      margin-top: 1.25rem;
+      font-size: 1rem;
+      color: #ccc;
+      font-weight: 600;
+    }
+    .payments-social .contact strong {
+      color: #ff3ecf;
+      text-shadow: 0 0 6px #ff3ecf;
+    }
+
+    /* Footer */
+    footer {
+      color: #999;
+      font-size: 0.9rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .service-columns {
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      header p {
+        font-size: 1.2rem;
+      }
+      .what-we-clean h2 {
+        font-size: 2rem;
+      }
+      .service-group h3 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
 </head>
 <body>
-<header>
-  <h1>Book Your 305 Heat Clean Today</h1>
-  <p>Steam Over Stains — Anywhere in Miami</p>
-</header>
+  <header>
+    <h1>Pure Steam Miami</h1>
+    <p>We Bring Miami’s Heat to Your Car</p>
+  </header>
 
-<form id="bookingForm" action="https://formspree.io/f/xblkqoen" method="POST">
-  <label for="service">Select Service</label>
-  <select id="service" name="service" required>
-    <option value="" disabled selected>Choose your package</option>
-    <option>Playoff Polish</option>
-    <option>Heat Wave Clean</option>
-    <option>305 MVP Package</option>
-    <option>Interior Detailing</option>
-    <option>Exterior Steam Cleaning</option>
-    <option>Full Vehicle Steam Clean</option>
-    <option>Boat Cleaning</option>
-    <option>Custom Request</option>
-  </select>
+  <section class="hero">
+    <p>Steam Over Stains — Anywhere in Miami</p>
+    <a href="booking.html" class="book-now-btn" aria-label="Book Now">Book Now</a>
+  </section>
 
-  <label for="date">Preferred Date</label>
-  <input type="date" id="date" name="date" required min="" />
+  <section class="what-we-clean" aria-label="What We Clean">
+    <h2>What We Clean — <span class="highlight">Steam-Powered & Safe for All Surfaces</span></h2>
 
-  <label for="time">Preferred Time</label>
-  <input type="time" id="time" name="time" required />
+    <div class="service-columns">
+      <div class="service-group">
+        <h3>Vehicles</h3>
+        <ul>
+          <li>🚗 Cars & Trucks</li>
+          <li>⛵ Boats</li>
+          <li>🏌️‍♂️ Golf Carts</li>
+          <li>🚜 Lawn Mowers</li>
+        </ul>
+      </div>
 
-  <label for="name">Full Name</label>
-  <input type="text" id="name" name="name" required placeholder="Your full name" />
+      <div class="service-group">
+        <h3>Home & Indoor Surfaces</h3>
+        <ul>
+          <li>🪟 Windows</li>
+          <li>🧼 Tile & Grout</li>
+          <li>🛋️ Upholstery & Furniture</li>
+          <li>🛏️ Linen & Clothing</li>
+          <li>🍽️ Tables & Countertops</li>
+        </ul>
+      </div>
 
-  <label for="phone">Phone Number</label>
-  <input type="tel" id="phone" name="phone" required placeholder="(786) 555-1234" pattern="[\d\s()+-]{7,15}" />
-
-  <label for="email">Email Address</label>
-  <input type="email" id="email" name="_replyto" required placeholder="you@example.com" />
-
-  <label for="notes">Special Requests / Notes</label>
-  <textarea id="notes" name="notes" placeholder="Let us know if you have any special requests..."></textarea>
-
-  <div class="payment-info">
-    <div>Prepay with:</div>
-    <div>
-      <a href="https://cash.app/$puresteammiami" target="_blank" rel="noopener noreferrer">Cash App: $puresteammiami</a> |
-      <a href="mailto:puresteammiami@gmail.com">PayPal: puresteammiami@gmail.com</a> |
-      <a href="https://chime.com" target="_blank" rel="noopener noreferrer">Chime: $PureSteamMiami</a>
+      <div class="service-group">
+        <h3>Stubborn Stains & Problems</h3>
+        <ul>
+          <li>🐾 Pet Feces</li>
+          <li>🍬 Gum in Carpet</li>
+          <li>🛠️ Rust on Houses & Sheds</li>
+          <li>🧽 Tough Stains</li>
+        </ul>
+      </div>
     </div>
-  </div>
 
-  <button type="submit">Book Now</button>
+    <p class="safe-strong">
+      Our steam cleaning <strong>kills 99.9% of bacteria</strong>, <span class="highlight">is chemical-free</span>, and <strong>safe on all materials</strong> — perfect for your home, vehicle, and everything in between.
+    </p>
+  </section>
 
-  <p class="success-message" id="successMessage">Thank you! Your booking request has been sent.</p>
-</form>
+  <section class="payments-social" aria-label="Payment Methods and Social Media">
+    <div>
+      Prepay with:
+      <a href="https://cash.app/$puresteammiami" target="_blank" rel="noopener noreferrer">Cash App</a> |
+      <a href="mailto:puresteammiami@gmail.com">PayPal</a> |
+      <a href="https://chime.com" target="_blank" rel="noopener noreferrer">Chime</a>
+    </div>
+    <div class="contact" aria-label="Contact Information">
+      Call/Text: <strong>(786) 297-3068</strong> | Email: <a href="mailto:puresteammiami@gmail.com">puresteammiami@gmail.com</a>
+    </div>
+    <div class="qr-code" aria-label="QR code linking to Pure Steam Miami website" style="margin-top: 1.5rem;">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2F72x72.github.io%2FPure-Steam-305%2F&size=150x150" alt="QR code linking to Pure Steam Miami website" />
+    </div>
+  </section>
 
-<script>
-  // Set minimum date to today
-  const dateInput = document.getElementById('date');
-  const today = new Date().toISOString().split('T')[0];
-  dateInput.setAttribute('min', today);
-
-  // Handle form submission with fetch and show success message
-  const form = document.getElementById('bookingForm');
-  const successMessage = document.getElementById('successMessage');
-
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    const data = new FormData(form);
-
-    fetch(form.action, {
-      method: form.method,
-      body: data,
-      headers: {
-        'Accept': 'application/json'
-      }
-    }).then(response => {
-      if (response.ok) {
-        form.reset();
-        successMessage.style.display = 'block';
-      } else {
-        response.json().then(data => {
-          if (Object.hasOwn(data, 'errors')) {
-            alert(data["errors"].map(error => error["message"]).join(", "));
-          } else {
-            alert("Oops! There was a problem submitting your form");
-          }
-        });
-      }
-    }).catch(() => {
-      alert("Oops! There was a problem submitting your form");
-    });
-  });
-</script>
-
+  <footer>
+    © 2025 Pure Steam Miami. All rights reserved.
+  </footer>
 </body>
 </html>
