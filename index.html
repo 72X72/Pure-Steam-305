@@ -1,302 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Pure Steam Miami</title>
+<section class="what-we-clean">
+  <h2>What We Clean — <span class="highlight">Steam-Powered & Safe for All Surfaces</span></h2>
 
-<!-- Font Awesome for icons -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-/>
-
-<style>
-  /* Reset & base */
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0; padding: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    color: #eee;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  a {
-    text-decoration: none;
-    color: #00f0ff;
-    font-weight: 700;
-    transition: color 0.3s, text-shadow 0.3s;
-  }
-  a:hover, a:focus {
-    color: #ff3ecf;
-    text-shadow:
-      0 0 8px #ff3ecf,
-      0 0 15px #ff3ecf,
-      0 0 25px #00f0ff;
-  }
-
-  /* Header */
-  header {
-    background: #111;
-    box-shadow: 0 0 25px #ff3ecf;
-    padding: 1.5rem 1.5rem;
-    text-align: center;
-  }
-  header h1 {
-    font-weight: 900;
-    color: #ff3ecf;
-    font-size: 2.8rem;
-    margin: 0;
-    text-shadow:
-      0 0 8px #ff3ecf,
-      0 0 15px #ff3ecf;
-  }
-  header p {
-    margin: 0.25rem 0 0.75rem;
-    font-weight: 700;
-    color: #00f0ff;
-    font-style: italic;
-    font-size: 1.2rem;
-    text-shadow: 0 0 5px #00f0ff;
-  }
-
-  /* Main */
-  main {
-    flex: 1;
-    max-width: 900px;
-    margin: 2rem auto 4rem;
-    padding: 0 1rem;
-  }
-
-  /* Hero */
-  .hero {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-  .hero h2 {
-    font-size: 2.8rem;
-    font-weight: 900;
-    color: #ff3ecf;
-    margin-bottom: 0.5rem;
-    text-shadow: 0 0 15px #ff3ecf;
-  }
-  .hero p {
-    font-size: 1.5rem;
-    font-style: italic;
-    color: #00f0ff;
-    margin-bottom: 1.8rem;
-    text-shadow: 0 0 10px #00f0ff;
-  }
-  .hero a.book-now-btn {
-    background: linear-gradient(90deg, #ff3ecf, #00f0ff);
-    padding: 1rem 3rem;
-    border-radius: 40px;
-    color: white;
-    font-weight: 900;
-    font-size: 1.4rem;
-    box-shadow:
-      0 0 20px #ff3ecf,
-      0 0 40px #00f0ff;
-    text-transform: uppercase;
-    transition: box-shadow 0.3s ease;
-    display: inline-block;
-  }
-  .hero a.book-now-btn:hover,
-  .hero a.book-now-btn:focus {
-    box-shadow:
-      0 0 30px #ff3ecf,
-      0 0 60px #00f0ff;
-    outline: none;
-  }
-
-  /* What We Clean Section */
-  section.what-we-clean {
-    margin-bottom: 3rem;
-    text-align: center;
-  }
-  section.what-we-clean h3 {
-    color: #ff3ecf;
-    font-weight: 900;
-    margin-bottom: 2rem;
-    font-size: 2rem;
-    text-shadow: 0 0 15px #ff3ecf;
-  }
-  section.what-we-clean ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 3rem;
-    padding: 0;
-    margin: 0 auto;
-    max-width: 900px;
-  }
-  section.what-we-clean li {
-    flex: 1 1 140px;
-    text-align: center;
-    color: #eee;
-    cursor: default;
-    transition: transform 0.3s ease;
-  }
-  section.what-we-clean li i {
-    font-size: 4.5rem;
-    color: #ff3ecf;
-    filter: drop-shadow(0 0 5px #ff3ecf);
-    transition: color 0.3s ease, filter 0.3s ease;
-  }
-  section.what-we-clean li:nth-child(even) i {
-    color: #00f0ff;
-    filter: drop-shadow(0 0 5px #00f0ff);
-  }
-  section.what-we-clean li p {
-    margin-top: 0.75rem;
-    font-weight: 900;
-    font-size: 1.2rem;
-    text-shadow: 0 0 5px #0008;
-  }
-  section.what-we-clean li:hover {
-    transform: scale(1.15);
-  }
-  section.what-we-clean li:hover i {
-    color: #fff;
-    filter:
-      drop-shadow(0 0 12px #ff3ecf)
-      drop-shadow(0 0 25px #00f0ff);
-  }
-
-  /* Payment & Social Section */
-  section.payment-social {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-  section.payment-social h3 {
-    font-weight: 900;
-    color: #ff3ecf;
-    margin-bottom: 1.2rem;
-    font-size: 2rem;
-    text-shadow: 0 0 15px #ff3ecf;
-  }
-  .payments, .socials {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    font-weight: 900;
-    font-size: 1.3rem;
-  }
-  .payments a, .socials a {
-    color: #00f0ff;
-    text-decoration: none;
-    padding: 0.3rem 0.6rem;
-    border-radius: 8px;
-    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
-  }
-  .payments a:hover, .socials a:hover {
-    background-color: #ff3ecf;
-    color: white;
-    box-shadow:
-      0 0 10px #ff3ecf,
-      0 0 15px #00f0ff;
-  }
-
-  /* Contact info */
-  footer {
-    background: #111;
-    padding: 1.5rem 1.5rem;
-    text-align: center;
-    font-size: 1rem;
-    color: #ccc;
-    box-shadow: 0 -3px 20px #ff3ecf;
-  }
-  footer .contact-info {
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-    color: #00f0ff;
-    text-shadow: 0 0 8px #00f0ff;
-  }
-  footer .qr-code img {
-    width: 150px;
-    height: 150px;
-    border-radius: 20px;
-    border: 5px solid #ff3ecf;
-    box-shadow:
-      0 0 30px #ff3ecf,
-      0 0 50px #00f0ff;
-  }
-
-  /* Responsive */
-  @media (max-width: 640px) {
-    section.what-we-clean ul {
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-    }
-    section.what-we-clean li {
-      flex: none;
-      margin-bottom: 1.5rem;
-    }
-  }
-</style>
-</head>
-<body>
-
-<header>
-  <h1>Pure Steam Miami</h1>
-  <p>We Bring Miami’s Heat to Your Car</p>
-</header>
-
-<main>
-  <section class="hero">
-    <h2>Steam Over Stains — Anywhere in Miami</h2>
-    <p>Book your service today!</p>
-    <a href="booking.html" class="book-now-btn" aria-label="Book Now">Book Now</a>
-  </section>
-
-  <section class="what-we-clean" aria-label="What We Clean">
-    <h3>What We Clean</h3>
-    <ul>
-      <li><i class="fas fa-car"></i><p>Cars</p></li>
-      <li><i class="fas fa-truck"></i><p>Trucks</p></li>
-      <li><i class="fas fa-ship"></i><p>Boats</p></li>
-      <li><i class="fas fa-burn"></i><p>Industrial Kitchens</p></li>
-      <li><i class="fas fa-snowflake"></i><p>Air Conditioners</p></li>
-      <li><i class="fas fa-gem"></i><p>Granite Surfaces</p></li>
-      <li><i class="fas fa-house"></i><p>In-Home Cleaning</p></li>
-      <li><i class="fas fa-wrench"></i><p>Car Restoration</p></li>
-    </ul>
-  </section>
-
-  <section class="payment-social" aria-label="Payment Methods and Social Media">
-    <h3>Payment Methods & Social Media</h3>
-    <div class="payments">
-      <a href="https://cash.app/$puresteammiami" target="_blank" rel="noopener noreferrer">Cash App</a>
-      <a href="mailto:puresteammiami@gmail.com">PayPal</a>
-      <a href="https://chime.com" target="_blank" rel="noopener noreferrer">Chime</a>
+  <div class="service-columns">
+    <div class="service-group">
+      <h3>Vehicles</h3>
+      <ul>
+        <li>🚗 Cars & Trucks</li>
+        <li>⛵ Boats</li>
+        <li>🏌️‍♂️ Golf Carts</li>
+        <li>🚜 Lawn Mowers</li>
+      </ul>
     </div>
-    <div class="socials" style="margin-top: 1rem;">
-      <a href="https://facebook.com/PureSteamMiam" target="_blank" rel="noopener noreferrer">Facebook</a>
-      <a href="https://instagram.com/frank_b_white" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <a href="https://tiktok.com/@frankbwhite" target="_blank" rel="noopener noreferrer">TikTok</a>
+
+    <div class="service-group">
+      <h3>Home & Indoor Surfaces</h3>
+      <ul>
+        <li>🪟 Windows</li>
+        <li>🧼 Tile & Grout</li>
+        <li>🛋️ Upholstery & Furniture</li>
+        <li>🛏️ Linen & Clothing</li>
+        <li>🍽️ Tables & Countertops</li>
+      </ul>
     </div>
-  </section>
-</main>
 
-<footer>
-  <div class="contact-info" aria-label="Contact Information">
-    <p>Call/Text: (786) 297-3068</p>
-    <p>Email: puresteammiami@gmail.com</p>
+    <div class="service-group">
+      <h3>Stubborn Stains & Problems</h3>
+      <ul>
+        <li>🐾 Pet Feces</li>
+        <li>🍬 Gum in Carpet</li>
+        <li>🛠️ Rust on Houses & Sheds</li>
+        <li>🧽 Tough Stains</li>
+      </ul>
+    </div>
   </div>
-  <div class="qr-code" aria-label="QR code linking to Pure Steam Miami website">
-    <img
-      src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2F72x72.github.io%2FPure-Steam-305%2F&size=150x150"
-      alt="QR code linking to Pure Steam Miami website"
-    />
-  </div>
-</footer>
 
-</body>
-</html>
+  <p class="safe-strong">Our steam cleaning <strong>kills 99.9% of bacteria</strong>, <span class="highlight">is chemical-free</span>, and <strong>safe on all materials</strong> — perfect for your home, vehicle, and everything in between.</p>
+</section>
